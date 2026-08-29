@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIFE STORY</title>
+<meta name="description" content="人生を、あなた自身の声で未来へ遺す。終活映像サービス LIFE STORY — 番組ディレクター本人があなたの人生を取材し、一本の映像作品として残します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --paper: #f5f1e8;        /* 生成り紙 */
+    --paper-deep: #ede7d8;   /* 一段沈んだ紙面 */
+    --ink: #262019;          /* 墨 */
+    --ink-sub: #675d4e;      /* 墨・淡 */
+    --line: #d8cfbc;         /* 罫線（紙と同hue） */
+    --line-strong: #b3a68c;
+    --brass: #8a5410;        /* 深真鍮（企画書デッキ継承） */
+    --brass-deep: #6f4209;
+    --brass-light: #cfa05e;  /* 暗転面用の明真鍮 */
+    --sumi: #1d1a16;         /* 暗転面 */
+    --sumi-text: #f1ece1;
+    --sumi-sub: #b0a693;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+    overflow-x: clip;
+    font-size: 16px;
+  }
+  ::selection { background: var(--brass); color: var(--paper); }
+
+  h1, h2, h3, .serif { font-family: var(--serif); font-weight: 600; letter-spacing: 0.04em; }
+  h2 { text-wrap: balance; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding-left: 6vw; padding-right: 6vw; }
+  section { padding-top: 9rem; padding-bottom: 9rem; }
+
+  /* ===== 誌面の章罫線（プリミティブE: 全編で反復） ===== */
+  .chapter {
+    display: flex; align-items: baseline; gap: 1.2rem;
+    border-top: 1px solid var(--line-strong);
+    padding-top: 1.2rem; margin-bottom: 3.5rem;
+  }
+  .chapter .no { font-family: var(--serif); font-size: 0.95rem; color: var(--brass); letter-spacing: 0.1em; }
+  .chapter .label { font-size: 0.8rem; letter-spacing: 0.28em; color: var(--ink-sub); text-transform: uppercase; }
+  .chapter .jp { margin-left: auto; font-size: 0.8rem; letter-spacing: 0.2em; color: var(--ink-sub); }
+
+  .h-lg { font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.5; }
+  .h-md { font-size: clamp(1.35rem, 2.6vw, 1.8rem); line-height: 1.6; }
+  .lead { color: var(--ink-sub); max-width: 38em; }
+  .note { font-size: 0.78rem; color: var(--ink-sub); line-height: 1.8; }
+
+  /* ===== ヒーロー（非対称・誌面） ===== */
+  .hero { min-height: 94vh; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: center; padding-top: 6rem; padding-bottom: 4rem; position: relative; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.9rem; font-size: 0.8rem; letter-spacing: 0.3em; color: var(--ink-sub); margin-bottom: 2.2rem; }
+  .hero-eyebrow::before { content: ""; width: 2.6rem; height: 1px; background: var(--brass); }
+  .hero h1 {
+    font-size: clamp(2.1rem, 4.4vw, 3.5rem);
+    font-weight: 700; line-height: 1.55; letter-spacing: 0.06em;
+  }
+  .hero h1 em { font-style: normal; color: var(--brass); }
+  .hero-sub { margin-top: 2.2rem; max-width: 32em; color: var(--ink-sub); }
+  .hero-cta-row { margin-top: 3rem; display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; }
+  .hero-note { font-size: 0.82rem; color: var(--ink-sub); }
+  .hero-figure { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+  .hero-figure .ph { position: relative; width: 100%; }
+  .hero-figure img { border-radius: 2px; }
+  .hero-figure .ph::after {
+    content: ""; position: absolute; inset: 0;
+    border: 1px solid var(--line-strong); border-radius: 2px;
+    transform: translate(14px, 14px); z-index: -1;
+  }
+  .hero-caption { margin-top: 1rem; font-size: 0.75rem; color: var(--ink-sub); letter-spacing: 0.12em; border-left: 2px solid var(--brass); padding-left: 0.8rem; }
+  .hero-side {
+    position: absolute; right: -1.5rem; top: 50%; transform: translateY(-50%);
+    writing-mode: vertical-rl; font-family: var(--serif);
+    font-size: 0.78rem; letter-spacing: 0.5em; color: var(--line-strong);
+  }
+
+  /* ===== ボタン（6状態設計） ===== */
+  .btn {
+    display: inline-block; padding: 1.05rem 2.6rem;
+    background: var(--brass); color: #faf6ec; text-decoration: none;
+    font-weight: 500; letter-spacing: 0.14em; font-size: 0.92rem;
+    border-radius: 2px; border: 1px solid var(--brass);
+    transition: background 0.18s ease, transform 0.12s ease;
+    will-change: transform;
+  }
+  .btn:hover { background: var(--brass-deep); border-color: var(--brass-deep); }
+  .btn:active { background: #5d3707; transform: scale(0.98); }
+  .btn:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+  .btn-ghost {
+    background: transparent; color: var(--brass); border: 1px solid var(--line-strong);
+  }
+  .btn-ghost:hover { background: rgba(138, 84, 16, 0.07); border-color: var(--brass); }
+  .btn-ghost:active { background: rgba(138, 84, 16, 0.14); }
+
+  /* ===== 暗転面（THE QUESTION） ===== */
+  .dark-band { background: var(--sumi); color: var(--sumi-text); position: relative; }
+  .dark-band .chapter { border-top-color: #4a4335; }
+  .dark-band .chapter .no { color: var(--brass-light); }
+  .dark-band .chapter .label, .dark-band .chapter .jp { color: var(--sumi-sub); }
+  .q-grid { display: grid; grid-template-columns: 1fr 0.75fr; gap: 4rem; align-items: center; }
+  .q-grid h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.7; font-weight: 600; }
+  .q-grid h2 em { font-style: normal; color: var(--brass-light); }
+  .q-body { margin-top: 2.4rem; color: var(--sumi-sub); max-width: 34em; }
+  .q-body strong { color: var(--sumi-text); font-weight: 500; }
+  .q-figure img { border-radius: 2px; opacity: 0.92; }
+  .q-figure figcaption { margin-top: 0.9rem; font-size: 0.75rem; color: var(--sumi-sub); letter-spacing: 0.12em; }
+
+  /* ===== 悩みリスト（罫線誌面） ===== */
+  .issue-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4.5rem; align-items: start; }
+  .issue-list { list-style: none; }
+  .issue-list li {
+    border-bottom: 1px solid var(--line);
+    padding: 1.1rem 0.2rem; color: var(--ink-sub); font-size: 0.98rem;
+    display: flex; gap: 1rem; align-items: baseline;
+  }
+  .issue-list li::before { content: "—"; color: var(--brass); flex-shrink: 0; }
+  .issue-answer { position: sticky; top: 6rem; }
+  .issue-answer .h-lg em { font-style: normal; color: var(--brass); }
+  .issue-answer p { margin-top: 1.8rem; }
+
+  /* ===== 問いかけ（インタビューの質問・大きな明朝） ===== */
+  .ask { background: var(--paper-deep); }
+  .ask-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center; }
+  .ask-questions { list-style: none; }
+  .ask-questions li {
+    font-family: var(--serif); font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    padding: 1.4rem 0; border-bottom: 1px solid var(--line-strong);
+    line-height: 1.7; letter-spacing: 0.06em;
+  }
+  .ask-questions li:first-child { border-top: 1px solid var(--line-strong); }
+  .ask-questions li span { color: var(--brass); font-size: 0.85em; margin-right: 1.1rem; }
+  .ask-copy p { margin-top: 1.6rem; }
+  .ask-copy .acts { margin-top: 2.4rem; font-family: var(--serif); font-size: 1.12rem; line-height: 2.3; color: var(--ink); }
+  .ask-copy .acts em { font-style: normal; border-bottom: 1px solid var(--brass); padding-bottom: 2px; }
+
+  /* ===== エビデンス ===== */
+  .evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+  .evidence-cell { padding: 3rem 2.5rem; }
+  .evidence-cell + .evidence-cell { border-left: 1px solid var(--line); }
+  .evidence-cell .stat { font-family: var(--serif); font-size: clamp(2.6rem, 5.5vw, 4rem); color: var(--brass); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .evidence-cell .stat small { font-size: 0.4em; color: var(--ink-sub); letter-spacing: 0.1em; }
+  .evidence-cell h3 { margin-top: 1rem; font-size: 1.05rem; }
+  .evidence-cell p { margin-top: 0.8rem; font-size: 0.9rem; color: var(--ink-sub); }
+
+  /* ===== ディレクター ===== */
+  .director-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center; }
+  .director-figure .ph { position: relative; }
+  .director-figure img { border-radius: 2px; }
+  .director-figure .ph::after {
+    content: ""; position: absolute; inset: 0;
+    border: 1px solid var(--line-strong); border-radius: 2px;
+    transform: translate(-14px, 14px); z-index: -1;
+  }
+  .director-copy h2 em { font-style: normal; color: var(--brass); }
+  .director-copy > p { margin-top: 1.8rem; }
+  .director-points { margin-top: 2.4rem; list-style: none; }
+  .director-points li { border-top: 1px solid var(--line); padding: 1.1rem 0.2rem; display: flex; gap: 1.2rem; align-items: baseline; }
+  .director-points li:last-child { border-bottom: 1px solid var(--line); }
+  .director-points .k { font-family: var(--serif); color: var(--brass); flex-shrink: 0; font-size: 0.95rem; }
+  .director-points .v { font-size: 0.95rem; color: var(--ink-sub); }
+
+  /* ===== FLOW（段違いタイムライン） ===== */
+  .flow-item {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem 4.5rem;
+    align-items: center; padding: 3.5rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .flow-item:last-of-type { border-bottom: 1px solid var(--line); }
+  .flow-item:nth-child(even) .flow-figure { order: -1; }
+  .flow-step { display: flex; align-items: baseline; gap: 1.1rem; }
+  .flow-step .en { font-family: var(--serif); font-size: 1.7rem; letter-spacing: 0.18em; }
+  .flow-step .num { font-size: 0.8rem; color: var(--brass); letter-spacing: 0.15em; font-variant-numeric: tabular-nums; }
+  .flow-copy h3 { margin-top: 0.9rem; font-size: 1.15rem; font-weight: 600; }
+  .flow-copy p { margin-top: 0.9rem; color: var(--ink-sub); font-size: 0.95rem; max-width: 30em; }
+  .flow-figure img { border-radius: 2px; }
+  .flow-figure figcaption { margin-top: 0.8rem; font-size: 0.74rem; color: var(--ink-sub); letter-spacing: 0.12em; }
+  .flow-meet { background: var(--paper-deep); border-radius: 2px; padding: 2.2rem 2.4rem; font-family: var(--serif); font-size: 1.1rem; line-height: 2.1; }
+
+  /* ===== プラン（罫線で区切る誌面料金表） ===== */
+  .plans { display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+  .plan { padding: 2.8rem 2.2rem 3rem; display: flex; flex-direction: column; }
+  .plan + .plan { border-left: 1px solid var(--line); }
+  .plan.featured { background: var(--paper-deep); }
+  .plan .tier { font-size: 0.72rem; letter-spacing: 0.26em; color: var(--brass); }
+  .plan h3 { font-size: 1.25rem; margin-top: 0.7rem; line-height: 1.5; }
+  .plan .concept { font-size: 0.86rem; color: var(--ink-sub); margin-top: 0.4rem; }
+  .plan .price { font-family: var(--serif); font-size: 2rem; margin-top: 1.6rem; font-variant-numeric: tabular-nums; }
+  .plan .price small { font-size: 0.45em; color: var(--ink-sub); letter-spacing: 0.1em; }
+  .plan ul { list-style: none; margin-top: 1.6rem; flex-grow: 1; }
+  .plan ul li { font-size: 0.87rem; color: var(--ink-sub); padding: 0.45rem 0; border-top: 1px solid var(--line); }
+  .plan-upgrade { margin-top: 2.6rem; padding: 1.8rem 2.2rem; background: var(--paper-deep); border-left: 3px solid var(--brass); border-radius: 2px; }
+  .plan-upgrade p { font-size: 0.92rem; }
+  .plan-upgrade strong { font-weight: 700; }
+
+  /* ===== 選ばれる理由（漢数字の大タイポ） ===== */
+  .reasons { list-style: none; counter-reset: none; }
+  .reason {
+    display: grid; grid-template-columns: 6rem 1fr; gap: 2.5rem;
+    padding: 3rem 0; border-top: 1px solid var(--line); align-items: start;
+  }
+  .reason:last-child { border-bottom: 1px solid var(--line); }
+  .reason .kan { font-family: var(--serif); font-size: 3.4rem; color: var(--brass); line-height: 1; padding-top: 0.3rem; }
+  .reason h3 { font-size: 1.3rem; line-height: 1.6; }
+  .reason p { margin-top: 0.9rem; color: var(--ink-sub); font-size: 0.96rem; max-width: 40em; }
+
+  /* ===== 贈り物（節目） ===== */
+  .gift { background: var(--paper-deep); }
+  .gift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center; }
+  .gift-copy h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); line-height: 1.7; }
+  .gift-copy > p { margin-top: 1.8rem; }
+  .milestones { margin-top: 2.4rem; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
+  .milestones li {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--line-strong); padding: 0.75rem 0.2rem;
+    font-size: 0.95rem;
+  }
+  .milestones .age { font-family: var(--serif); color: var(--brass); font-variant-numeric: tabular-nums; }
+  .gift-figure img { border-radius: 2px; }
+  .gift-figure figcaption { margin-top: 0.8rem; font-size: 0.74rem; color: var(--ink-sub); letter-spacing: 0.12em; }
+
+  /* ===== 納品・条件 ===== */
+  .terms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line-strong); }
+  .term { padding: 2.2rem 2rem; border-bottom: 1px solid var(--line); }
+  .term:nth-child(odd) { border-right: 1px solid var(--line); }
+  .term h3 { font-size: 0.98rem; display: flex; gap: 0.8rem; align-items: baseline; }
+  .term h3::before { content: "§"; color: var(--brass); font-family: var(--serif); }
+  .term p { margin-top: 0.7rem; font-size: 0.88rem; color: var(--ink-sub); }
+
+  /* ===== クロージング＋CTA ===== */
+  .closing { background: var(--sumi); color: var(--sumi-text); }
+  .closing .chapter { border-top-color: #4a4335; }
+  .closing .chapter .no { color: var(--brass-light); }
+  .closing .chapter .label, .closing .chapter .jp { color: var(--sumi-sub); }
+  .closing-grid { display: grid; grid-template-columns: 1fr 0.7fr; gap: 4.5rem; align-items: center; }
+  .closing-copy .serif-lines { font-family: var(--serif); font-size: clamp(1.3rem, 2.3vw, 1.75rem); line-height: 2.1; }
+  .closing-copy .serif-lines em { font-style: normal; color: var(--brass-light); }
+  .closing-copy > p { margin-top: 2rem; color: var(--sumi-sub); max-width: 36em; }
+  .closing-cta { margin-top: 3rem; display: flex; gap: 1.4rem; align-items: center; flex-wrap: wrap; }
+  .closing .btn { background: var(--brass-light); border-color: var(--brass-light); color: #241c0e; font-weight: 700; }
+  .closing .btn:hover { background: #ddb377; border-color: #ddb377; }
+  .closing .btn:active { background: #c8955022; }
+  .closing .btn:focus-visible { outline-color: var(--brass-light); }
+  .closing-note { font-size: 0.8rem; color: var(--sumi-sub); }
+  .closing-figure img { border-radius: 2px; opacity: 0.92; }
+  .closing-figure figcaption { margin-top: 0.9rem; font-size: 0.75rem; color: var(--sumi-sub); letter-spacing: 0.12em; }
+
+  footer { background: var(--sumi); color: var(--sumi-sub); padding: 3.5rem 0 4rem; border-top: 1px solid #4a4335; }
+  footer .foot-notes { font-size: 0.74rem; line-height: 2; max-width: 52em; }
+  footer .foot-brand { margin-top: 2.5rem; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; }
+  footer .foot-brand .logo { font-family: var(--serif); letter-spacing: 0.3em; color: var(--sumi-text); font-size: 1.05rem; }
+  footer .foot-brand .copy { font-size: 0.74rem; letter-spacing: 0.1em; }
+
+  /* ===== 写真ホバー（L4・上質系） ===== */
+  .ph-hover img { filter: saturate(0.92); transition: filter 0.5s ease, transform 0.5s ease; }
+  @media (hover: hover) {
+    .ph-hover:hover img { filter: saturate(1.05); transform: scale(1.015); }
+  }
+  .ph-hover { overflow: hidden; border-radius: 2px; }
+
+  /* ===== Scroll-driven reveal（デフォルト可視=プログレッシブ） ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(36px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: fadeUp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+  }
+  .io-pending { opacity: 0; transform: translateY(36px); }
+  .io-pending.in { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal, .io-pending { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .ph-hover img { transition: none; }
+    .btn { transition: none; }
+  }
+
+  /* ===== レスポンシブ ===== */
+  @media (max-width: 900px) {
+    section { padding-top: 6rem; padding-bottom: 6rem; }
+    .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 5.5rem; gap: 3rem; }
+    .hero-side { display: none; }
+    .hero-figure { max-width: 30rem; }
+    .q-grid, .issue-grid, .ask-flow, .director-grid, .gift-grid, .closing-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .issue-answer { position: static; }
+    .flow-item { grid-template-columns: 1fr; gap: 1.8rem; padding: 2.6rem 0; }
+    .flow-item:nth-child(even) .flow-figure { order: 0; }
+    .evidence-grid { grid-template-columns: 1fr; }
+    .evidence-cell + .evidence-cell { border-left: none; border-top: 1px solid var(--line); }
+    .plans { grid-template-columns: 1fr; }
+    .plan + .plan { border-left: none; border-top: 1px solid var(--line); }
+    .reason { grid-template-columns: 3.5rem 1fr; gap: 1.5rem; }
+    .reason .kan { font-size: 2.4rem; }
+    .milestones { grid-template-columns: 1fr; }
+    .terms-grid { grid-template-columns: 1fr; }
+    .term:nth-child(odd) { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 01 HERO ===== -->
+<section class="hero wrap">
+  <div class="hero-copy">
+    <p class="hero-eyebrow">終活映像サービス</p>
+    <h1 class="hero-h1">人生を、<br>あなた自身の<em>声</em>で<br>未来へ遺す。</h1>
+    <p class="hero-sub">ただ映像を残すのではない。あなたの人生を知り、あなたと一緒に人生を振り返り、その人だけの物語を映像にする。それが LIFE STORY です。ご自身の終活にも、親への——大切な人への贈り物にも。</p>
+    <div class="hero-cta-row">
+      <a class="btn" href="#cta">人生について、話してみる</a>
+      <p class="hero-note">まずは「話すだけ」の LIFE STORY SESSION<br>55,000円〜（価格は仮・本制作へ進む場合は全額充当）</p>
+    </div>
+  </div>
+  <figure class="hero-figure reveal">
+    <div class="ph ph-hover" data-parallax><img src="assets/img1.jpg" alt="窓辺でアルバムを膝に置き、庭を眺めて微笑む高齢の女性" width="928" height="1152" fetchpriority="high"></div>
+    <figcaption class="hero-caption">語ることから、はじまる。</figcaption>
+  </figure>
+  <p class="hero-side" aria-hidden="true">人生を、映像に遺す</p>
+</section>
+
+<!-- ===== 02 THE QUESTION（暗転面） ===== -->
+<section class="dark-band">
+  <div class="wrap">
+    <div class="chapter"><span class="no">02</span><span class="label">The Question</span><span class="jp">問い</span></div>
+    <div class="q-grid">
+      <div>
+        <h2 class="reveal">大切な人の<em>「声」</em>を、<br>覚えていますか。</h2>
+        <p class="q-body reveal">写真は残せる。手紙も残せる。しかし——<strong>声・話し方・笑い方・表情・間・その人らしさ</strong>まで残すことができるのは、映像だけ。</p>
+      </div>
+      <figure class="q-figure reveal">
+        <div class="ph-hover"><img src="assets/img2.jpg" alt="目を閉じて穏やかに微笑む高齢の女性の横顔" loading="lazy" width="900" height="1117"></div>
+        <figcaption>声も、間も、その人らしさも。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 ISSUE ===== -->
+<section>
+  <div class="wrap">
+    <div class="chapter"><span class="no">03</span><span class="label">Current Issue</span><span class="jp">語る終活</span></div>
+    <div class="issue-grid">
+      <div>
+        <p class="lead reveal">終活に関心を持つ人は増えている。それでも——</p>
+        <ul class="issue-list">
+          <li class="reveal">何から始めればいいかわからない</li>
+          <li class="reveal">エンディングノートを書けない</li>
+          <li class="reveal">自分の死について家族と話しづらい</li>
+          <li class="reveal">何を残せばいいかわからない</li>
+          <li class="reveal">文章で自分の人生を表現するのが難しい</li>
+        </ul>
+        <p class="note reveal" style="margin-top:1.4rem;">人は、残したいものがある。しかし、それを言葉にするきっかけがない。</p>
+      </div>
+      <div class="issue-answer">
+        <h2 class="h-lg reveal">書くのは、難しい。<br>でも、<em>話すことなら、できる。</em></h2>
+        <p class="lead reveal">だから LIFE STORY は「書く終活」ではなく「語る終活」から始めます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 OUR APPROACH（聞くことから） ===== -->
+<section class="ask">
+  <div class="wrap">
+    <div class="chapter"><span class="no">04</span><span class="label">What Makes Us Different</span><span class="jp">映像を撮ることから、始めない</span></div>
+    <div class="ask-flow">
+      <ol class="ask-questions">
+        <li class="reveal"><span>一</span>どんな子供でしたか？</li>
+        <li class="reveal"><span>二</span>人生で一番楽しかったことは？</li>
+        <li class="reveal"><span>三</span>一番辛かったことは？</li>
+        <li class="reveal"><span>四</span>今でも忘れられない人は？</li>
+        <li class="reveal"><span>五</span>家族に伝えていないことは？</li>
+      </ol>
+      <div class="ask-copy">
+        <h2 class="h-md reveal">まず、その人の話を聞く。</h2>
+        <p class="lead reveal">会話を重ねることで、本人自身も気づいていなかった、その人の人生にある物語を見つけていく。テレビドキュメンタリーの取材設計をもとにした独自のインタビューメソッドで、「聞く力」を再現可能なサービス品質にしています。</p>
+        <p class="acts reveal">人生を聞く。写真を見る。思い出を辿る。一緒に笑う。時には、思い出して泣く。<br>——その時間があるからこそ、<em>他にはない映像</em>が生まれる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 EVIDENCE ===== -->
+<section>
+  <div class="wrap">
+    <div class="chapter"><span class="no">05</span><span class="label">Evidence</span><span class="jp">「向き合う時間」の裏付け</span></div>
+    <div class="evidence-grid">
+      <div class="evidence-cell reveal">
+        <p class="stat">g = 1.41</p>
+        <h3>回想法（ライフレビュー）</h3>
+        <p>高齢者のうつに対する効果は、2024年のメタ分析（42研究・3,361人）で大きな効果量が確認されています。過去を語り、聞き手と共有するプロセスが、心理的な安定につながる。</p>
+      </div>
+      <div class="evidence-cell reveal">
+        <p class="stat">約90<small>%</small></p>
+        <h3>ディグニティセラピー</h3>
+        <p>終末期の患者に人生を語らせ、「世代継承文書」として家族に渡す心理療法。約90%という高い満足度が一貫して報告されています。</p>
+      </div>
+    </div>
+    <p class="note reveal" style="margin-top:1.6rem;">※ 本サービスは医療・心理療法の提供ではなく、上記の研究知見はサービス思想の背景として紹介するものです。本サービスによる心理的効果を保証するものではありません。<br>出典: Lin J, et al. (2024) <em>Journal of Affective Disorders</em>（回想法・ライフレビューの高齢期うつに関するメタ分析・42研究3,361人・g=1.41）／ Chochinov HM, et al. (2005) <em>Journal of Clinical Oncology</em>（ディグニティセラピー）</p>
+  </div>
+</section>
+
+<!-- ===== 06 DIRECTOR ===== -->
+<section>
+  <div class="wrap">
+    <div class="chapter"><span class="no">06</span><span class="label">Track Record</span><span class="jp">取材する人</span></div>
+    <div class="director-grid">
+      <figure class="director-figure reveal">
+        <div class="ph ph-hover"><img src="assets/img3.jpg" alt="自宅のリビングでカメラとマイクを前にインタビューに答える高齢の女性" loading="lazy" width="1200" height="675"></div>
+      </figure>
+      <div class="director-copy">
+        <h2 class="h-lg reveal">現役の番組ディレクター<em>本人</em>が、<br>あなたを取材する。</h2>
+        <p class="lead reveal">『ガイアの夜明け』をはじめ、数々のテレビドキュメンタリー番組のディレクションを担当。全国放送で培われた構成力・取材力を、一人ひとりの人生映像に注ぎます。「制作会社のネットワーク」ではなく、企画から取材・構成まで、番組を作ってきたディレクター自身が一貫して向き合う。</p>
+        <ul class="director-points">
+          <li class="reveal"><span class="k">取材力</span><span class="v">短時間で信頼関係を築くインタビュー力</span></li>
+          <li class="reveal"><span class="k">構成力</span><span class="v">「物語として魅せる」全国放送基準の構成・編集</span></li>
+          <li class="reveal"><span class="k">一貫性</span><span class="v">外注や分業では出せない一貫性が、作品の質になる</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 SERVICE FLOW ===== -->
+<section>
+  <div class="wrap">
+    <div class="chapter"><span class="no">07</span><span class="label">Service Flow</span><span class="jp">LIFE STORY SESSION の流れ</span></div>
+
+    <div class="flow-item">
+      <div class="flow-copy">
+        <p class="flow-step"><span class="num">STEP 01</span><span class="en serif">MEET</span></p>
+        <h3>まず、出会う。</h3>
+        <p>いきなりカメラを回さない。一人の人として、人生について話を聞くことから始めます。</p>
+      </div>
+      <figure class="flow-figure reveal">
+        <div class="ph-hover"><img src="assets/img4.jpg" alt="自宅の玄関先で取材スタッフを笑顔で迎える高齢の女性" loading="lazy" width="1200" height="675"></div>
+        <figcaption>初対面は、カメラを持たずに。</figcaption>
+      </figure>
+    </div>
+
+    <div class="flow-item">
+      <div class="flow-copy">
+        <p class="flow-step"><span class="num">STEP 02</span><span class="en serif">LISTEN</span></p>
+        <h3>人生を、聞く。</h3>
+        <p>幼少期、青春、恋愛、家族、仕事、人生の転機。嬉しかったこと、辛かったこと。</p>
+      </div>
+      <figure class="flow-figure reveal">
+        <div class="ph-hover"><img src="assets/img5.jpg" alt="お茶を挟んで身振りを交えながら人生を語る高齢の女性" loading="lazy" width="1200" height="675"></div>
+        <figcaption>語りの中に、物語がある。</figcaption>
+      </figure>
+    </div>
+
+    <div class="flow-item">
+      <div class="flow-copy">
+        <p class="flow-step"><span class="num">STEP 03</span><span class="en serif">DISCOVER</span></p>
+        <h3>大切なものを、見つける。</h3>
+        <p>その人にとって本当に大切なものを見つける。それは「場所」かもしれないし、「人」かもしれないし、「一枚の写真」かもしれない。</p>
+      </div>
+      <figure class="flow-figure reveal">
+        <div class="ph-hover"><img src="assets/img6.jpg" alt="古い写真を手に取り、涙ぐみながら見つめる高齢の女性" loading="lazy" width="1200" height="675"></div>
+        <figcaption>一枚の写真が、人生を語り出す。</figcaption>
+      </figure>
+    </div>
+
+    <div class="flow-item">
+      <div class="flow-copy">
+        <p class="flow-step"><span class="num">STEP 04</span><span class="en serif">CREATE</span></p>
+        <h3>人生を、映像にする。</h3>
+        <p>見つけた人生を、その人に合った形で映像にする。全国放送基準の編集品質で。</p>
+      </div>
+      <figure class="flow-figure reveal">
+        <div class="ph-hover"><img src="assets/img7.jpg" alt="編集ソフトの画面に向かい映像を編集するディレクターの手元" loading="lazy" width="1200" height="675"></div>
+        <figcaption>プランの分数ではなく、人生から逆算して。</figcaption>
+      </figure>
+    </div>
+
+    <div class="flow-item">
+      <div class="flow-copy">
+        <p class="flow-step"><span class="num">STEP 05</span><span class="en serif">LEAVE</span></p>
+        <h3>未来へ、残す。</h3>
+        <p>家族へ、子供へ、孫へ。そして、まだ見ぬ未来の誰かへ。</p>
+      </div>
+      <figure class="flow-figure reveal">
+        <div class="ph-hover"><img src="assets/img8.jpg" alt="リビングでテレビに映る祖母の映像を一緒に観る母と子" loading="lazy" width="1200" height="675"></div>
+        <figcaption>映像は、世代を超えて残る。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08 PLANS ===== -->
+<section>
+  <div class="wrap">
+    <div class="chapter"><span class="no">08</span><span class="label">Service Lineup</span><span class="jp">3つのサービスライン</span></div>
+    <div class="plans">
+      <div class="plan reveal">
+        <p class="tier">ENTRY</p>
+        <h3>LIFE STORY<br>SESSION</h3>
+        <p class="concept">人生を、聞かせてください</p>
+        <p class="price">55,000<small>円〜（仮）</small></p>
+        <ul>
+          <li>事前ヒアリング</li>
+          <li>人生インタビュー</li>
+          <li>映像撮影</li>
+          <li>写真・思い出の整理</li>
+          <li>ショートムービー制作</li>
+          <li>インタビュー映像データ納品</li>
+        </ul>
+      </div>
+      <div class="plan featured reveal">
+        <p class="tier">STANDARD</p>
+        <h3>LIFE STORY</h3>
+        <p class="concept">その人だけの人生映像を制作する</p>
+        <p class="price">198,000<small>円〜（仮）</small></p>
+        <ul>
+          <li>複数回のインタビュー</li>
+          <li>人生年表の作成</li>
+          <li>写真・映像素材の整理</li>
+          <li>自宅や思い出の場所での撮影</li>
+          <li>家族インタビュー</li>
+          <li>オリジナル構成・編集</li>
+        </ul>
+      </div>
+      <div class="plan reveal">
+        <p class="tier">DOCUMENTARY</p>
+        <h3>LIFE STORY<br>DOCUMENTARY</h3>
+        <p class="concept">あなたの人生を、一本の映画にする</p>
+        <p class="price">498,000<small>円〜（仮）</small></p>
+        <ul>
+          <li>複数回の取材・複数日の撮影</li>
+          <li>思い出の場所へのロケ</li>
+          <li>家族・友人インタビュー</li>
+          <li>日常の撮影</li>
+          <li>写真・アーカイブ映像の活用</li>
+          <li>本格的なドキュメンタリー制作</li>
+        </ul>
+      </div>
+    </div>
+    <div class="plan-upgrade reveal">
+      <p><strong>SESSION の料金は、本制作へ進む場合に制作費へ全額充当。</strong>「話してみる」が無駄になりません。最初から高額な決断をさせない——まず「話してみる」から始められる設計です。</p>
+      <p class="note" style="margin-top:0.6rem;">※ 価格はすべて仮のもので、今後の事業設計により調整します。立ち上げ期は、事例掲載・お客様の声へのご協力を条件としたモニター価格をご用意します（掲載時はモニター条件である旨を明示します）。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 09 REASONS ===== -->
+<section>
+  <div class="wrap">
+    <div class="chapter"><span class="no">09</span><span class="label">Why Life Story</span><span class="jp">選ばれる理由</span></div>
+    <ul class="reasons">
+      <li class="reason reveal">
+        <span class="kan" aria-hidden="true">一</span>
+        <div>
+          <h3>人生から逆算する設計</h3>
+          <p>多くの自分史映像は「5分・10分・20分」と映像の分数や撮影日数を先に固定します。LIFE STORY は「何分の映像を買うか」ではなく「何を残したいか」から始める。プランの分数・日数で人生を切りません。</p>
+        </div>
+      </li>
+      <li class="reason reveal">
+        <span class="kan" aria-hidden="true">二</span>
+        <div>
+          <h3>5.5万円（仮）から始まり、無駄にならない</h3>
+          <p>「まず話してみる」SESSION は、調査範囲では最安帯の入口（2026年8月・当社調べ／価格は仮）。しかも本制作に進めば全額充当。高額な決断を最初に迫りません。</p>
+        </div>
+      </li>
+      <li class="reason reveal">
+        <span class="kan" aria-hidden="true">三</span>
+        <div>
+          <h3>現役の番組ディレクター本人が取材する</h3>
+          <p>「テレビ品質」を謳うサービスはありますが、企画から取材・構成まで番組ディレクター本人が一貫して向き合う体制は、調査範囲では稀（2026年8月・当社調べ）。プロセス——向き合う時間——そのものが商品です。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 10 GIFT ===== -->
+<section class="gift">
+  <div class="wrap">
+    <div class="chapter"><span class="no">10</span><span class="label">Gift Milestone</span><span class="jp">動く記念写真</span></div>
+    <div class="gift-grid">
+      <div class="gift-copy">
+        <h2 class="reveal">「親に、何を贈ろう。」<br>——その答えを、人生の映像に。</h2>
+        <p class="lead reveal">七五三、成人式、結婚——人生の節目に写真館で記念写真を撮るように。LIFE STORY は、人生の節目に「動く記念写真」を残す、子から親への贈り物です。</p>
+        <ul class="milestones">
+          <li class="reveal"><span>退職</span><span class="age">節目に</span></li>
+          <li class="reveal"><span>還暦</span><span class="age">60歳</span></li>
+          <li class="reveal"><span>古希</span><span class="age">70歳</span></li>
+          <li class="reveal"><span>喜寿</span><span class="age">77歳</span></li>
+          <li class="reveal"><span>傘寿</span><span class="age">80歳</span></li>
+          <li class="reveal"><span>米寿</span><span class="age">88歳</span></li>
+        </ul>
+      </div>
+      <figure class="gift-figure reveal">
+        <div class="ph-hover"><img src="assets/img9.jpg" alt="ソファでアルバムを一緒に開く母と娘" loading="lazy" width="1200" height="675"></div>
+        <figcaption>本人だけでなく、家族から始まる LIFE STORY。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11 TERMS ===== -->
+<section>
+  <div class="wrap">
+    <div class="chapter"><span class="no">11</span><span class="label">Delivery &amp; Terms</span><span class="jp">制作期間・納品・お支払い</span></div>
+    <div class="terms-grid">
+      <div class="term reveal">
+        <h3>制作期間の目安（仮）</h3>
+        <p>SESSION＝撮影後約1ヶ月 / LIFE STORY＝約2〜3ヶ月 / DOCUMENTARY＝約3〜4ヶ月（取材回数により調整）</p>
+      </div>
+      <div class="term reveal">
+        <h3>納品形態（仮）</h3>
+        <p>映像データ納品を基本に、DVD / Blu-ray・上映用データをオプションでご用意します。</p>
+      </div>
+      <div class="term reveal">
+        <h3>お支払い（仮）</h3>
+        <p>SESSION＝前払い / LIFE STORY 以上＝着手金＋納品時残金（着手金率は事業設計で確定します）。</p>
+      </div>
+      <div class="term reveal">
+        <h3>権利とプライバシー</h3>
+        <p>著作権・肖像権の帰属、撮影データの保存・削除、ご本人逝去後の公開範囲・ご家族への引き継ぎまで、契約前に文書で明示します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 12 CLOSING + CTA ===== -->
+<section class="closing" id="cta">
+  <div class="wrap">
+    <div class="chapter"><span class="no">12</span><span class="label">Closing</span><span class="jp">最初の一歩</span></div>
+    <div class="closing-grid">
+      <div class="closing-copy">
+        <p class="serif-lines reveal">人は、いつかいなくなる。<br>だからこそ、その人がいたことを、未来に残したい。<br>声。表情。笑い方。言葉。そして、その人らしさ。<br>いつか、この映像を見返したとき。<br>そこには、<em>もう一度会いたい人</em>がいる。</p>
+        <p class="reveal">「終活映像を作りませんか？」ではありません。<br>——一度、自分の人生について話してみませんか。</p>
+        <div class="closing-cta reveal">
+          <a class="btn" href="mailto:mako@akibaground.jp?subject=LIFE%20STORY%20SESSION%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">話を聞いてみる（メールで相談）</a>
+          <p class="closing-note">ご本人からも、ご家族からも。無理な営業は一切いたしません。<br>メールアプリが開かない場合は mako@akibaground.jp へ直接どうぞ。</p>
+        </div>
+      </div>
+      <figure class="closing-figure reveal">
+        <div class="ph-hover"><img src="assets/img13.jpg" alt="古いアルバムの上で重ねられた、若い手と年を重ねた手" loading="lazy" width="900" height="1117"></div>
+        <figcaption>手から手へ。人生は、受け継がれる。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-notes">
+      <p>※ 記載の価格・制作期間・支払条件はすべて仮のもので、正式なご提供条件は今後の事業設計により確定します。</p>
+      <p>※ 競合比較に関する記述は2026年8月時点の当社調べによるもので、「調査範囲では」の限定を付しています。</p>
+      <p>※ 本サービスは医療・心理療法の提供ではありません。回想法・ディグニティセラピーに関する研究知見は、サービス思想の背景としてご紹介しています。</p>
+      <p>※ 本ページの写真はサービスイメージです。</p>
+    </div>
+    <div class="foot-brand">
+      <p class="logo">LIFE STORY</p>
+      <p class="copy">人生を、あなた自身の声で未来へ遺す。 © 2026 LIFE STORY</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  const mm = gsap.matchMedia();
+  mm.add("(prefers-reduced-motion: no-preference)", () => {
+
+    // Lenis + ScrollTrigger 統合（公式パターン）
+    const lenis = new Lenis({ autoRaf: false });
+    lenis.on("scroll", ScrollTrigger.update);
+    const raf = (t) => lenis.raf(t * 1000);
+    gsap.ticker.add(raf);
+    gsap.ticker.lagSmoothing(0);
+
+    // ヒーロー: SplitText mask reveal（opacity 0.1開始=LCP罠回避）
+    SplitText.create(".hero-h1", {
+      type: "lines", mask: "lines", autoSplit: true,
+      onSplit: (self) => gsap.from(self.lines, {
+        duration: 0.8, yPercent: 100, opacity: 0.1, stagger: 0.12, ease: "expo.out"
+      })
+    });
+    gsap.from(".hero-eyebrow", { opacity: 0, y: 12, duration: 0.6, delay: 0.1, ease: "power2.out" });
+    gsap.from(".hero-sub, .hero-cta-row", { opacity: 0, y: 20, duration: 0.7, delay: 0.55, stagger: 0.12, ease: "power2.out" });
+
+    // ヒーロー写真の控えめパララックス
+    gsap.to("[data-parallax]", {
+      yPercent: -7, ease: "none",
+      scrollTrigger: { trigger: "[data-parallax]", start: "top bottom", end: "bottom top", scrub: 1 }
+    });
+
+    // CSS scroll-driven 非対応ブラウザのみ IO フォールバック
+    if (!CSS.supports("animation-timeline: view()")) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll(".reveal").forEach((el) => {
+        el.classList.add("io-pending"); io.observe(el);
+      });
+    }
+
+    return () => { gsap.ticker.remove(raf); lenis.destroy(); };
+  });
+</script>
+</body>
+</html>
