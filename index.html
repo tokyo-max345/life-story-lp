@@ -3,12 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LIFE STORY</title>
-<meta name="description" content="人生を、あなた自身の声で未来へ遺す。終活映像サービス LIFE STORY — 番組ディレクター本人があなたの人生を取材し、一本の映像作品として残します。">
+<title>LIFE STORY｜話すだけで、人生がショートムービーになる終活映像サービス</title>
+<meta name="description" content="人生を、あなた自身の声で未来へ遺す。終活映像サービス LIFE STORY — 番組ディレクター本人があなたの人生を取材し、一本の映像作品として残します。入口は55,000円（税込）・相談無料。">
+<link rel="canonical" href="https://lifestory.akibaground.jp/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LIFE STORY">
+<meta property="og:title" content="LIFE STORY｜話すだけで、人生がショートムービーになる終活映像サービス">
+<meta property="og:description" content="番組ディレクター本人があなたの人生を取材し、一本の映像作品として残す終活映像サービス。入口は55,000円（税込）・相談無料。親への贈り物にも。">
+<meta property="og:url" content="https://lifestory.akibaground.jp/">
+<meta property="og:image" content="https://lifestory.akibaground.jp/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://akibaground.jp/#organization",
+      "name": "株式会社アキグラ",
+      "url": "https://akibaground.jp/",
+      "address": { "@type": "PostalAddress", "postalCode": "160-0022", "addressRegion": "東京都", "addressLocality": "新宿区", "streetAddress": "新宿5-10-8", "addressCountry": "JP" }
+    },
+    {
+      "@type": "Service",
+      "name": "LIFE STORY",
+      "serviceType": "終活映像・自分史映像の制作",
+      "description": "番組ディレクター本人が人生を取材し、一本の映像作品として残す終活映像サービス。",
+      "url": "https://lifestory.akibaground.jp/",
+      "provider": { "@id": "https://akibaground.jp/#organization" },
+      "areaServed": "JP",
+      "offers": [
+        { "@type": "Offer", "name": "LIFE STORY SESSION", "price": "55000", "priceCurrency": "JPY" },
+        { "@type": "Offer", "name": "LIFE STORY", "price": "198000", "priceCurrency": "JPY" },
+        { "@type": "Offer", "name": "LIFE STORY DOCUMENTARY", "price": "498000", "priceCurrency": "JPY" }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%8E%9E%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<!-- Google tag (gtag.js) GA4: LIFE STORY LP -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7ML99F8QBK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7ML99F8QBK');
+</script>
 <style>
   :root {
     --paper: #f5f1e8;        /* 生成り紙 */
@@ -359,15 +406,70 @@
     .btn { transition: none; }
   }
 
+  /* ===== 禁則・分節（語中改行の防止） ===== */
+  .nw { white-space: nowrap; }
+
+  /* ===== コンセプトムービー（05章内） ===== */
+  .sample-video { margin-top: 4.5rem; }
+  .sample-video h3 { font-size: 1.25rem; margin-bottom: 1.4rem; }
+  .sample-video video { width: 100%; height: auto; display: block; border-radius: 2px; background: var(--sumi); }
+  .sample-video figure { position: relative; }
+  .sample-video figcaption { margin-top: 0.9rem; font-size: 0.78rem; color: var(--ink-sub); line-height: 1.8; }
+
+  /* ===== 贈り方ガイド（GIFT章内・4ステップ） ===== */
+  .gift-howto { margin-top: 4rem; border-top: 1px solid var(--line-strong); padding-top: 2.4rem; }
+  .gift-howto h3 { font-size: 1.25rem; }
+  .gift-steps { list-style: none; margin-top: 1.8rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 2.2rem; counter-reset: gs; }
+  .gift-steps li { counter-increment: gs; border-top: 1px solid var(--line-strong); padding-top: 1.1rem; }
+  .gift-steps li::before { content: counter(gs, cjk-ideographic); font-family: var(--serif); color: var(--brass); font-size: 1.3rem; display: block; }
+  .gift-steps h4 { font-family: var(--serif); font-size: 1rem; margin-top: 0.5rem; line-height: 1.6; }
+  .gift-steps p { margin-top: 0.6rem; font-size: 0.86rem; color: var(--ink-sub); }
+  .gift-consent { margin-top: 2rem; padding: 1.4rem 1.8rem; background: var(--paper); border-left: 3px solid var(--brass); border-radius: 2px; font-size: 0.88rem; color: var(--ink-sub); }
+
+  /* ===== FAQ（罫線誌面・全開示型） ===== */
+  .faq-list { list-style: none; border-top: 1px solid var(--line-strong); max-width: 46em; }
+  .faq-list li { border-bottom: 1px solid var(--line); padding: 1.8rem 0.2rem; }
+  .faq-list h3 { font-size: 1.05rem; line-height: 1.7; display: flex; gap: 1rem; align-items: baseline; }
+  .faq-list h3::before { content: "問"; color: var(--brass); font-family: var(--serif); flex-shrink: 0; font-size: 0.95rem; }
+  .faq-list p { margin-top: 0.8rem; font-size: 0.92rem; color: var(--ink-sub); display: flex; gap: 1rem; align-items: baseline; }
+  .faq-list p::before { content: "答"; color: var(--line-strong); font-family: var(--serif); flex-shrink: 0; font-size: 0.95rem; }
+
+  /* ===== 相談フォーム（暗転面上） ===== */
+  .contact-form { margin-top: 3rem; max-width: 40em; }
+  .contact-form .form-row { margin-bottom: 1.4rem; }
+  .contact-form label { display: block; font-size: 0.82rem; letter-spacing: 0.12em; color: var(--sumi-sub); margin-bottom: 0.5rem; }
+  .contact-form label .req { color: var(--brass-light); font-size: 0.72rem; margin-left: 0.5rem; }
+  .contact-form input[type="text"], .contact-form input[type="email"], .contact-form input[type="tel"],
+  .contact-form select, .contact-form textarea {
+    width: 100%; padding: 0.85rem 1rem; font-size: 16px; font-family: var(--sans);
+    background: #2a2620; color: var(--sumi-text);
+    border: 1px solid #4a4335; border-radius: 2px;
+  }
+  .contact-form select { appearance: auto; }
+  .contact-form textarea { min-height: 7.5rem; resize: vertical; }
+  .contact-form input:focus-visible, .contact-form select:focus-visible, .contact-form textarea:focus-visible {
+    outline: 2px solid var(--brass-light); outline-offset: 1px;
+  }
+  .contact-form .btn { border: none; cursor: pointer; font-family: var(--sans); font-size: 0.95rem; width: 100%; }
+  .form-alt { margin-top: 1.4rem; font-size: 0.82rem; color: var(--sumi-sub); }
+  .form-alt a { color: var(--brass-light); }
+  .free-note { margin-top: 2.2rem; padding: 1.2rem 1.5rem; border: 1px solid #4a4335; border-radius: 2px; font-size: 0.9rem; color: var(--sumi-text); }
+  .free-note strong { color: var(--brass-light); font-weight: 700; }
+
+  /* ===== フッター運営者情報 ===== */
+  footer .foot-company { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #4a4335; font-size: 0.8rem; line-height: 2.1; }
+  footer .foot-company .fc-name { color: var(--sumi-text); }
+  footer .foot-links { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.8rem; }
+  footer .foot-links a { color: var(--sumi-sub); text-decoration: none; border-bottom: 1px solid #4a4335; padding-bottom: 1px; }
+  footer .foot-links a:hover { color: var(--sumi-text); border-bottom-color: var(--sumi-sub); }
+
   /* ===== レスポンシブ ===== */
   @media (max-width: 1200px) {
     /* wrapが全幅になる帯域では右外し(-1.5rem)が横はみ出しになる */
     .hero-side { right: 0.5rem; }
   }
-  @media (max-width: 1100px) {
-    /* 比較表(min-width:960px)が収まらない全帯域でスクロールヒントを出す */
-    .mm-hint { display: block; }
-  }
+  /* 比較表は1120px誌面でも僅かに溢れるため、ヒントは常時表示 */
+  .mm-hint { display: block; }
   @media (max-width: 900px) {
     section { padding-top: 6rem; padding-bottom: 6rem; }
     .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 5.5rem; gap: 3rem; }
@@ -390,6 +492,14 @@
     .milestones { grid-template-columns: 1fr; }
     .terms-grid { grid-template-columns: 1fr; }
     .term:nth-child(odd) { border-right: none; }
+    .gift-steps { grid-template-columns: 1fr 1fr; gap: 1.6rem 2rem; }
+  }
+  @media (max-width: 560px) {
+    .gift-steps { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 360px) {
+    /* 320px幅で「あなた自身の声で」(nowrap 8字)が収まるようにH1を一段絞る */
+    .hero h1 { font-size: 1.8rem; }
   }
   @media (max-width: 760px) {
     .cmp-head { display: none; }
@@ -410,11 +520,11 @@
 <section class="hero wrap">
   <div class="hero-copy">
     <p class="hero-eyebrow">終活映像サービス</p>
-    <h1 class="hero-h1">人生を、<br>あなた自身の<em>声</em>で<br>未来へ遺す。</h1>
+    <h1 class="hero-h1">人生を、<br><span class="nw">あなた自身の<em>声</em>で</span><br>未来へ遺す。</h1>
     <p class="hero-sub">ただ映像を残すのではない。あなたの人生を知り、あなたと一緒に人生を振り返り、その人だけの物語を映像にする。それが LIFE STORY です。ご自身の終活にも、親への——大切な人への贈り物にも。</p>
     <div class="hero-cta-row">
       <a class="btn" href="#cta">人生について、話してみる</a>
-      <p class="hero-note">話すだけで、あなたの物語がショートムービーになる LIFE STORY SESSION<br>55,000円〜（撮影・編集・データ納品込み／本制作時は全額充当）</p>
+      <p class="hero-note">話すだけで、あなたの物語がショートムービーになる LIFE STORY SESSION<br>55,000円〜（税込・撮影・編集・データ納品込み／本制作時は全額充当）<br><strong>ご相談・お見積りは無料です。</strong></p>
     </div>
   </div>
   <figure class="hero-figure reveal">
@@ -495,7 +605,7 @@
         <div class="ph ph-hover"><img src="assets/img3.jpg" alt="自宅のリビングでカメラとマイクを前にインタビューに答える高齢の女性" loading="lazy" width="1200" height="675"></div>
       </figure>
       <div class="director-copy">
-        <h2 class="h-lg reveal">現役の番組ディレクター<em>本人</em>が、<br>あなたを取材する。</h2>
+        <h2 class="h-lg reveal">現役の<span class="nw">番組ディレクター</span><em>本人</em>が、<br>あなたを取材する。</h2>
         <p class="lead reveal">『ガイアの夜明け』をはじめ、数々のテレビドキュメンタリー番組のディレクションを担当。全国放送で培われた構成力・取材力を、一人ひとりの人生映像に注ぎます。「制作会社のネットワーク」ではなく、企画から取材・構成まで、番組を作ってきたディレクター自身が一貫して向き合う。</p>
         <ul class="director-points">
           <li class="reveal"><span class="k">取材力</span><span class="v">短時間で信頼関係を築くインタビュー力</span></li>
@@ -505,20 +615,33 @@
       </div>
     </div>
 
-    <!-- ディレクタープロフィール（写真=仮置きimg7・本人写真/氏名は確定次第ここを差し替え） -->
+    <!-- ディレクタープロフィール（中井敦・写真=akibaground.jp掲載の実写ポートレート） -->
     <div class="profile-card reveal">
       <figure class="profile-photo">
-        <div class="ph-hover"><img src="assets/img7.jpg" alt="映像編集に向かうディレクターの手元" loading="lazy" width="1200" height="675"></div>
+        <div class="ph-hover"><img src="assets/nakai.webp" alt="プロデューサー 中井敦のポートレート" loading="lazy" width="480" height="480"></div>
       </figure>
       <div class="profile-body">
-        <p class="profile-label">Director Profile</p>
-        <h3 class="serif">テレビドキュメンタリー ディレクター</h3>
-        <p class="profile-bio">『ガイアの夜明け』をはじめ、数々のテレビドキュメンタリー番組のディレクションを担当。全国放送の現場で培った取材力と構成力で、企画から取材・構成・編集までを一人で貫く。「その人の人生を、その人の言葉で聞く」ことを何よりも大切にしています。</p>
+        <p class="profile-label">Producer Profile</p>
+        <h3 class="serif">中井 敦<span class="nw">（なかい あつし）</span></h3>
+        <p class="profile-bio">株式会社アキグラ 代表取締役。『ガイアの夜明け』をはじめ数々のテレビドキュメンタリー番組のディレクションを担当し、NHK 東日本大震災復興特別番組の中継ディレクターなども務めた。全国放送の現場で培った取材力と構成力で、企画から取材・構成・編集までを一人で貫く。「その人の人生を、その人の言葉で聞く」ことを何よりも大切にしています。</p>
         <ul class="profile-facts">
+          <li><span class="k">所属</span><span class="v">株式会社アキグラ 代表取締役（LIFE STORY は同社の提供サービスです）</span></li>
           <li><span class="k">担当領域</span><span class="v">企画・取材・構成・編集の一貫ディレクション</span></li>
-          <li><span class="k">主な実績</span><span class="v">『ガイアの夜明け』ほか、テレビドキュメンタリー番組多数</span></li>
+          <li><span class="k">主な実績</span><span class="v">『ガイアの夜明け』／NHK 東日本大震災復興特別番組 中継ディレクター／かりゆし「アンマー」制作（約9,800万再生）ほか</span></li>
+          <li><span class="k">実績詳細</span><span class="v"><a href="https://akibaground.jp/works/" target="_blank" rel="noopener">株式会社アキグラ 制作実績ページ</a></span></li>
         </ul>
       </div>
+    </div>
+
+    <div class="sample-video reveal">
+      <h3 class="serif">映像のトーンを、30秒で。</h3>
+      <figure>
+        <video controls playsinline preload="metadata" poster="assets/sample-poster.jpg" width="1200" height="675">
+          <source src="assets/sample.mp4" type="video/mp4">
+          お使いのブラウザは動画再生に対応していません。
+        </video>
+        <figcaption>LIFE STORY コンセプトムービー（30秒・音声なし）。※お客様の実映像ではなく、サービスの世界観をお伝えするコンセプト映像です。</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -599,7 +722,7 @@
         <p class="tier">ENTRY</p>
         <h3>LIFE STORY<br>SESSION</h3>
         <p class="concept">人生を、聞かせてください</p>
-        <p class="price">55,000<small>円〜</small></p>
+        <p class="price">55,000<small>円〜（税込）</small></p>
         <ul>
           <li>事前ヒアリング</li>
           <li>人生インタビュー</li>
@@ -613,7 +736,7 @@
         <p class="tier">STANDARD</p>
         <h3>LIFE STORY</h3>
         <p class="concept">その人だけの人生映像を制作する</p>
-        <p class="price">198,000<small>円〜</small></p>
+        <p class="price">198,000<small>円〜（税込）</small></p>
         <ul>
           <li>複数回のインタビュー</li>
           <li>人生年表の作成</li>
@@ -627,7 +750,7 @@
         <p class="tier">DOCUMENTARY</p>
         <h3>LIFE STORY<br>DOCUMENTARY</h3>
         <p class="concept">あなたの人生を、一本の映画にする</p>
-        <p class="price">498,000<small>円〜</small></p>
+        <p class="price">498,000<small>円〜（税込）</small></p>
         <ul>
           <li>複数回の取材・複数日の撮影</li>
           <li>思い出の場所へのロケ</li>
@@ -640,7 +763,7 @@
     </div>
     <div class="plan-upgrade reveal">
       <p><strong>SESSION の料金は、本制作へ進む場合に制作費へ全額充当。</strong>「話してみる」が無駄になりません。あなたの物語を、まず言葉にするところから始まります。</p>
-      <p class="note" style="margin-top:0.6rem;">※ 立ち上げ期は、事例掲載・お客様の声へのご協力を条件としたモニター価格をご用意します（掲載時はモニター条件である旨を明示します）。</p>
+      <p class="note" style="margin-top:0.6rem;">※ 表示価格はすべて税込です。<br>※ 立ち上げ期は、事例掲載・お客様の声へのご協力を条件としたモニター価格をご用意します（掲載時はモニター条件である旨を明示します）。</p>
     </div>
   </div>
 </section>
@@ -657,7 +780,7 @@
       </div>
       <div class="cm-card reveal">
         <p class="lbl">話すだけで、映像が残る</p>
-        <p class="big">55,000<small>円〜</small></p>
+        <p class="big">55,000<small>円〜（税込）</small></p>
         <p class="incl">取材・撮影・編集・ショートムービー納品まで込み</p>
         <p class="plus">本制作へ進めば、全額充当。</p>
       </div>
@@ -739,7 +862,7 @@
             </tr>
             <tr>
               <th scope="row">価格帯※</th>
-              <td class="col-us mm-price">5.5万〜</td>
+              <td class="col-us mm-price">5.5万〜<br>（税込）</td>
               <td class="mm-price">15.0万〜<br>43.5万</td>
               <td class="mm-price">約6万〜<br>14万</td>
               <td class="mm-price">11.9万〜<br>42.1万</td>
@@ -808,6 +931,29 @@
         <figcaption>本人だけでなく、家族から始まる LIFE STORY。</figcaption>
       </figure>
     </div>
+
+    <div class="gift-howto reveal">
+      <h3 class="serif">贈り方ガイド — ご家族からの進め方</h3>
+      <ol class="gift-steps">
+        <li>
+          <h4>まず、ご家族だけでご相談</h4>
+          <p>最初の相談は、ご本人に伝える前で構いません。想いや状況を伺い、進め方を一緒に考えます。</p>
+        </li>
+        <li>
+          <h4>切り出し方を、一緒に設計</h4>
+          <p>「終活」という言葉を使う必要はありません。「記念写真の映像版を撮ろう」——節目のお祝いとしての自然な伝え方をご提案します。</p>
+        </li>
+        <li>
+          <h4>日程・場所は、こちらで調整</h4>
+          <p>ご自宅や思い出の場所へ伺います。取材へのご家族の同席も歓迎です。</p>
+        </li>
+        <li>
+          <h4>渡し方まで、設計する</h4>
+          <p>ご家族での上映会、お祝いの席でのお披露目、データでの共有——完成した映像の「渡し方」までご一緒に考えます。</p>
+        </li>
+      </ol>
+      <p class="gift-consent">撮影・取材は、必ずご本人の同意をいただいてから行います。サプライズにしたい場合も、撮影そのものはご本人が納得された形で進めますのでご安心ください。</p>
+    </div>
   </div>
 </section>
 
@@ -836,18 +982,87 @@
   </div>
 </section>
 
-<!-- ===== 12 CLOSING + CTA ===== -->
+<!-- ===== 12 FAQ ===== -->
+<section>
+  <div class="wrap">
+    <div class="chapter"><span class="no">12</span><span class="label">FAQ</span><span class="jp">よくあるご質問</span></div>
+    <ul class="faq-list">
+      <li class="reveal">
+        <h3>話すのが得意ではないのですが、大丈夫ですか。</h3>
+        <p>大丈夫です。上手に話していただく必要はありません。会話の中から物語を引き出すのが番組ディレクターの仕事です。雑談のような時間の中で、自然に言葉になっていきます。</p>
+      </li>
+      <li class="reveal">
+        <h3>親に「縁起でもない」と思われないか心配です。</h3>
+        <p>「終活」として伝える必要はありません。還暦や古希など節目のお祝いに贈る「記念写真の映像版」としてご提案いただくのが自然です。切り出し方から一緒に考えますので、まずご家族だけでご相談ください。</p>
+      </li>
+      <li class="reveal">
+        <h3>撮影はどこで行いますか。遠方でも頼めますか。</h3>
+        <p>ご自宅や思い出の場所へ伺います。全国どちらでもご相談いただけます（遠方の場合は交通費を別途申し受けます）。</p>
+      </li>
+      <li class="reveal">
+        <h3>高齢で、長時間の撮影は体力的に不安です。</h3>
+        <p>ご本人の体調に合わせて、短い時間に分けた取材設計ができます。休憩を挟みながら、無理のないペースで進めます。</p>
+      </li>
+      <li class="reveal">
+        <h3>完成までどのくらいかかりますか。</h3>
+        <p>目安として SESSION は撮影後約1ヶ月、LIFE STORY は約2〜3ヶ月、DOCUMENTARY は約3〜4ヶ月です（取材回数により調整します）。お急ぎの節目がある場合はご相談ください。</p>
+      </li>
+      <li class="reveal">
+        <h3>相談した時点で費用はかかりますか。</h3>
+        <p>かかりません。ご相談・お見積りは無料です。料金が発生するのは、内容にご納得いただき正式にお申し込みいただいた後だけです。</p>
+      </li>
+      <li class="reveal">
+        <h3>キャンセルや延期はできますか。</h3>
+        <p>お申し込み前に、キャンセル・延期の条件を含む契約条件を書面でご提示し、ご納得いただいてからのご契約となります。体調による延期などは柔軟にご相談に応じます。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 13 CLOSING + CTA ===== -->
 <section class="closing" id="cta">
   <div class="wrap">
-    <div class="chapter"><span class="no">12</span><span class="label">Closing</span><span class="jp">最初の一歩</span></div>
+    <div class="chapter"><span class="no">13</span><span class="label">Closing</span><span class="jp">最初の一歩</span></div>
     <div class="closing-grid">
       <div class="closing-copy">
-        <p class="serif-lines reveal">人は、いつかいなくなる。<br>だからこそ、その人がいたことを、未来に残したい。<br>声。表情。笑い方。言葉。そして、その人らしさ。<br>いつか、この映像を見返したとき。<br>そこには、<em>もう一度会いたい人</em>がいる。</p>
+        <p class="serif-lines reveal">人は、いつかいなくなる。<br>だからこそ、その人がいたことを、未来に残したい。<br>声。表情。笑い方。言葉。そして、その人らしさ。<br>いつか、この映像を見返したとき。<br>そこには、<em>もう一度会いたい人</em><span class="nw">がいる。</span></p>
         <p class="reveal">「終活映像を作りませんか？」ではありません。<br>——一度、自分の人生について話してみませんか。</p>
-        <div class="closing-cta reveal">
-          <a class="btn" href="mailto:info@akibaground.jp?subject=LIFE%20STORY%20SESSION%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">話を聞いてみる（メールで相談）</a>
-          <p class="closing-note">ご本人からも、ご家族からも。無理な営業は一切いたしません。<br>メールアプリが開かない場合は info@akibaground.jp へ直接どうぞ。</p>
-        </div>
+        <p class="free-note reveal"><strong>ご相談・お見積りは無料です。</strong>料金が発生するのは、内容にご納得いただき正式にお申し込みいただいた後だけ。ご本人からも、ご家族からも。無理な営業は一切いたしません。</p>
+        <form class="contact-form reveal" action="https://formsubmit.co/info@akibaground.jp" method="POST">
+          <input type="hidden" name="_subject" value="【LIFE STORY】サイトからのご相談">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://lifestory.akibaground.jp/thanks.html">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="form-row">
+            <label for="cf-name">お名前<span class="req">必須</span></label>
+            <input type="text" id="cf-name" name="お名前" required autocomplete="name">
+          </div>
+          <div class="form-row">
+            <label for="cf-email">メールアドレス<span class="req">必須</span></label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email">
+          </div>
+          <div class="form-row">
+            <label for="cf-tel">お電話番号（任意・お電話をご希望の方）</label>
+            <input type="tel" id="cf-tel" name="お電話番号" autocomplete="tel">
+          </div>
+          <div class="form-row">
+            <label for="cf-type">ご相談の種類<span class="req">必須</span></label>
+            <select id="cf-type" name="ご相談の種類" required>
+              <option value="">選択してください</option>
+              <option>まず話を聞いてみたい（無料相談）</option>
+              <option>LIFE STORY SESSION を申し込みたい</option>
+              <option>家族への贈り物として相談したい</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="cf-msg">メッセージ（任意）</label>
+            <textarea id="cf-msg" name="メッセージ" placeholder="例）母の古希のお祝いに考えています。まず話だけ聞いてみたいです。"></textarea>
+          </div>
+          <button class="btn" type="submit">無料で相談する</button>
+          <p class="form-alt">フォームが苦手な方は、メールでもどうぞ：<a href="mailto:info@akibaground.jp?subject=LIFE%20STORY%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">info@akibaground.jp</a></p>
+        </form>
       </div>
       <figure class="closing-figure reveal">
         <div class="ph-hover"><img src="assets/img13.jpg" alt="古いアルバムの上で重ねられた、若い手と年を重ねた手" loading="lazy" width="900" height="1117"></div>
@@ -863,9 +1078,19 @@
       <p>※ 競合比較に関する記述は2026年8月時点の当社調べによるもので、「調査範囲では」の限定を付しています。</p>
       <p>※ 本ページの写真はサービスイメージです。</p>
     </div>
+    <div class="foot-company">
+      <p class="fc-name">運営：株式会社アキグラ（LIFE STORY は株式会社アキグラの提供サービス・屋号です）</p>
+      <p>代表取締役：中井 敦　／　所在地：〒160-0022 東京都新宿区新宿5-10-8　／　お問い合わせ：info@akibaground.jp</p>
+      <nav class="foot-links" aria-label="運営会社の関連ページ">
+        <a href="https://akibaground.jp/" target="_blank" rel="noopener">株式会社アキグラ 公式サイト</a>
+        <a href="https://akibaground.jp/works/" target="_blank" rel="noopener">制作実績</a>
+        <a href="https://akibaground.jp/tokushoho/" target="_blank" rel="noopener">特定商取引法に基づく表記</a>
+        <a href="https://akibaground.jp/privacypolicy/" target="_blank" rel="noopener">プライバシーポリシー</a>
+      </nav>
+    </div>
     <div class="foot-brand">
       <p class="logo">LIFE STORY</p>
-      <p class="copy">人生を、あなた自身の声で未来へ遺す。 © 2026 LIFE STORY</p>
+      <p class="copy">人生を、あなた自身の声で未来へ遺す。 © 2026 akibaGround Inc.</p>
     </div>
   </div>
 </footer>
