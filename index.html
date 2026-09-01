@@ -166,6 +166,22 @@
   .director-points .k { font-family: var(--serif); color: var(--brass); flex-shrink: 0; font-size: 0.95rem; }
   .director-points .v { font-size: 0.95rem; color: var(--ink-sub); }
 
+  /* ===== ディレクタープロフィール ===== */
+  .profile-card {
+    margin-top: 4.5rem; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 0;
+    background: var(--paper-deep); border: 1px solid var(--line-strong); border-radius: 2px;
+  }
+  .profile-photo { align-self: stretch; }
+  .profile-photo .ph-hover, .profile-photo img { height: 100%; object-fit: cover; border-radius: 2px 0 0 2px; }
+  .profile-body { padding: 2.6rem 2.8rem; }
+  .profile-label { font-size: 0.72rem; letter-spacing: 0.3em; color: var(--brass); text-transform: uppercase; }
+  .profile-body h3 { margin-top: 0.8rem; font-size: 1.3rem; line-height: 1.6; }
+  .profile-bio { margin-top: 1.2rem; font-size: 0.93rem; color: var(--ink-sub); max-width: 36em; }
+  .profile-facts { list-style: none; margin-top: 1.8rem; }
+  .profile-facts li { border-top: 1px solid var(--line); padding: 0.85rem 0.2rem; display: flex; gap: 1.4rem; align-items: baseline; font-size: 0.9rem; }
+  .profile-facts .k { font-family: var(--serif); color: var(--brass); flex-shrink: 0; }
+  .profile-facts .v { color: var(--ink-sub); }
+
   /* ===== FLOW（段違いタイムライン） ===== */
   .flow-item {
     display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem 4.5rem;
@@ -350,6 +366,9 @@
     .hero-side { display: none; }
     .hero-figure { max-width: 30rem; }
     .q-grid, .issue-grid, .ask-flow, .director-grid, .gift-grid, .closing-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .profile-card { grid-template-columns: 1fr; margin-top: 3rem; }
+    .profile-photo img { border-radius: 2px 2px 0 0; }
+    .profile-body { padding: 2rem 1.6rem; }
     .cm-verdict { grid-template-columns: 1fr; gap: 3rem; margin-bottom: 3.5rem; }
     .cm-card { max-width: 26rem; }
     .issue-answer { position: static; }
@@ -475,6 +494,22 @@
           <li class="reveal"><span class="k">取材力</span><span class="v">短時間で信頼関係を築くインタビュー力</span></li>
           <li class="reveal"><span class="k">構成力</span><span class="v">「物語として魅せる」全国放送基準の構成・編集</span></li>
           <li class="reveal"><span class="k">一貫性</span><span class="v">外注や分業では出せない一貫性が、作品の質になる</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ディレクタープロフィール（写真=仮置きimg7・本人写真/氏名は確定次第ここを差し替え） -->
+    <div class="profile-card reveal">
+      <figure class="profile-photo">
+        <div class="ph-hover"><img src="assets/img7.jpg" alt="映像編集に向かうディレクターの手元" loading="lazy" width="1200" height="675"></div>
+      </figure>
+      <div class="profile-body">
+        <p class="profile-label">Director Profile</p>
+        <h3 class="serif">テレビドキュメンタリー ディレクター</h3>
+        <p class="profile-bio">『ガイアの夜明け』をはじめ、数々のテレビドキュメンタリー番組のディレクションを担当。全国放送の現場で培った取材力と構成力で、企画から取材・構成・編集までを一人で貫く。「その人の人生を、その人の言葉で聞く」ことを何よりも大切にしています。</p>
+        <ul class="profile-facts">
+          <li><span class="k">担当領域</span><span class="v">企画・取材・構成・編集の一貫ディレクション</span></li>
+          <li><span class="k">主な実績</span><span class="v">『ガイアの夜明け』ほか、テレビドキュメンタリー番組多数</span></li>
         </ul>
       </div>
     </div>
@@ -688,7 +723,7 @@
             </tr>
             <tr>
               <th scope="row">内容・特徴</th>
-              <td class="col-us">「話すだけ」のSESSION（ショートムービー納品付き）から開始。本制作へ進めば全額充当。番組ディレクター本人が一貫</td>
+              <td class="col-us">「話すだけ」のSESSION（ショートムービー納品付き）から開始。本制作へ進めば全額充当。番組ディレクター本人が一貫し、本格的な映像作成</td>
               <td>撮影半日〜3日・写真20〜100枚をプランで固定。BGM・テロップ付き完成映像</td>
               <td>写真スライドショー〜自宅撮影2日。お祝い事向けの構成。DVD/BD/MP4納品</td>
               <td>本人→家族→友人へ取材を段階拡大。約5〜10分の完成映像・クラウド保管（年額）</td>
@@ -697,7 +732,7 @@
             </tr>
             <tr>
               <th scope="row">価格帯※</th>
-              <td class="col-us mm-price">5.5万〜<br>19.8万〜<br>49.8万〜</td>
+              <td class="col-us mm-price">5.5万〜</td>
               <td class="mm-price">15.0万〜<br>43.5万</td>
               <td class="mm-price">約6万〜<br>14万</td>
               <td class="mm-price">11.9万〜<br>42.1万</td>
@@ -784,7 +819,7 @@
       </div>
       <div class="term reveal">
         <h3>お支払い</h3>
-        <p>全プランとも先入金制です。お申し込み後、制作開始前にお支払いいただきます。</p>
+        <p>全プランとも先入金制です。お申し込み後、制作開始前にお支払いいただきます。遠方での取材・撮影の場合は、交通費を別途申し受けます。</p>
       </div>
       <div class="term reveal">
         <h3>権利とプライバシー</h3>
