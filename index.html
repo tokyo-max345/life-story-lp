@@ -242,16 +242,18 @@
   .mm-title { font-size: 1.15rem; margin-bottom: 1.4rem; }
   .mm-hint { display: none; font-size: 0.72rem; color: var(--ink-sub); letter-spacing: 0.1em; margin: -0.8rem 0 0.6rem; }
   .mm-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .mm-table { width: 100%; min-width: 760px; border-collapse: collapse; background: var(--paper); border-top: 2px solid var(--ink); font-size: 0.86rem; line-height: 1.75; }
-  .mm-table thead th { font-size: 0.72rem; letter-spacing: 0.14em; color: var(--ink-sub); text-align: left; font-weight: 500; padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--line-strong); }
-  .mm-table tbody th, .mm-table tbody td { padding: 1.15rem 1.1rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; color: var(--ink-sub); font-weight: 400; }
-  .mm-table tbody th { font-family: var(--serif); font-weight: 600; color: var(--ink); white-space: nowrap; }
-  .mm-table tbody th span { display: block; font-family: var(--sans); font-size: 0.68rem; color: var(--ink-sub); font-weight: 400; letter-spacing: 0.08em; margin-top: 0.25rem; }
-  .mm-table .mm-price { white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .mm-us { background: rgba(138, 84, 16, 0.09); }
-  .mm-us th { border-left: 3px solid var(--brass); }
-  .mm-us th, .mm-us td { border-bottom: 2px solid var(--brass); color: var(--ink); }
-  .mm-us th span { color: var(--brass); font-weight: 700; }
+  .mm-table { width: 100%; min-width: 960px; table-layout: fixed; border-collapse: collapse; background: var(--paper); border-top: 2px solid var(--ink); font-size: 0.82rem; line-height: 1.75; }
+  .mm-table th, .mm-table td { padding: 1.05rem 0.9rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+  .mm-table thead th { font-family: var(--serif); font-size: 0.92rem; font-weight: 600; letter-spacing: 0.06em; color: var(--ink); text-align: center; vertical-align: bottom; border-bottom: 1px solid var(--line-strong); }
+  .mm-table thead th:first-child { width: 7.6rem; }
+  .mm-table thead th span { display: block; font-family: var(--sans); font-size: 0.64rem; color: var(--ink-sub); font-weight: 400; letter-spacing: 0.08em; margin-top: 0.25rem; }
+  .mm-table tbody th { font-family: var(--serif); font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+  .mm-table tbody td { color: var(--ink-sub); }
+  .mm-table .mm-price { font-variant-numeric: tabular-nums; }
+  .mm-us-h { background: var(--brass); color: #faf6ec; }
+  .mm-table thead th.mm-us-h span { color: #f0e3cb; }
+  .mm-table td.col-us { background: rgba(138, 84, 16, 0.09); border-left: 2px solid var(--brass); border-right: 2px solid var(--brass); color: var(--ink); font-weight: 500; }
+  .mm-table tbody tr:last-child .col-us { border-bottom: 2px solid var(--brass); }
 
   /* ===== 選ばれる理由（漢数字の大タイポ） ===== */
   .reasons { list-style: none; counter-reset: none; }
@@ -662,49 +664,48 @@
     <p class="note reveal" style="margin-top:1.4rem;">※「一般的な自分史映像サービス」は、自分史映像・終活映像の主要5社の公開情報（2026年8月時点・当社調べ・実ページ確認）をまとめた傾向です。各社のサービス内容・条件は異なり、単純な優劣を示すものではありません。当社の価格・条件はすべて仮のものです。</p>
 
     <div class="market-map reveal">
-      <h3 class="mm-title serif">さらに詳しく — 主要5社との比較マップ</h3>
+      <h3 class="mm-title serif">さらに詳しく — 主要5社との比較</h3>
       <p class="mm-hint" aria-hidden="true">→ 表は横にスクロールできます</p>
       <div class="mm-scroll">
         <table class="mm-table">
           <thead>
-            <tr><th scope="col">社</th><th scope="col">サービスの型</th><th scope="col">内容・特徴</th><th scope="col">価格帯※</th></tr>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col" class="mm-us-h">LIFE STORY<span>当サービス</span></th>
+              <th scope="col">A社<span>自分史映像専業</span></th>
+              <th scope="col">B社<span>家族ギフト映像</span></th>
+              <th scope="col">C社<span>思い出ビデオ</span></th>
+              <th scope="col">D社<span>終活専門家×映像</span></th>
+              <th scope="col">E社<span>ドキュメンタリー型</span></th>
+            </tr>
           </thead>
           <tbody>
-            <tr class="mm-us">
-              <th scope="row">LIFE STORY<span>当サービス</span></th>
-              <td>人生から逆算＋充当型</td>
-              <td>「まず話すだけ」から始まり、本制作へ進めば全額充当。現役の番組ディレクター本人が企画から取材・編集まで一貫</td>
-              <td class="mm-price">5.5万〜（仮）<br>19.8万〜（仮）<br>49.8万〜（仮）</td>
-            </tr>
             <tr>
-              <th scope="row">A社<span>自分史映像専業</span></th>
-              <td>分数固定プラン<br>（5分/10分/20分）</td>
-              <td>インタビュー撮影 半日〜3日・写真20〜100枚をプランで固定。BGM・テロップ・ナレーション付き完成映像</td>
-              <td class="mm-price">15.0万〜43.5万</td>
-            </tr>
-            <tr>
-              <th scope="row">B社<span>家族ギフト映像</span></th>
+              <th scope="row">サービスの型</th>
+              <td class="col-us">人生から逆算＋充当型</td>
+              <td>分数固定プラン（5分/10分/20分）</td>
               <td>撮影日数プラン</td>
-              <td>写真スライドショー〜自宅撮影2日。お祝い事（還暦・記念日）向けの構成。DVD/BD/MP4納品</td>
-              <td class="mm-price">約6万〜14万</td>
-            </tr>
-            <tr>
-              <th scope="row">C社<span>思い出ビデオ</span></th>
               <td>分数＋撮影日数プラン</td>
-              <td>本人→家族→友人へ取材を段階拡大。約5〜10分の完成映像・クラウド保管（年額）</td>
-              <td class="mm-price">11.9万〜42.1万</td>
-            </tr>
-            <tr>
-              <th scope="row">D社<span>終活専門家×映像</span></th>
               <td>単一プラン</td>
-              <td>終活カウンセラーが定型の質問リストでインタビュー。エンディングノート同梱・終活相談つき</td>
-              <td class="mm-price">38.5万</td>
+              <td>ネットワーク型</td>
             </tr>
             <tr>
-              <th scope="row">E社<span>ドキュメンタリー型</span></th>
-              <td>ネットワーク型</td>
-              <td>テレビ番組の実績スタッフと協働する制作ネットワーク。プロナレーション・納期3〜4ヶ月</td>
-              <td class="mm-price">税別50万〜</td>
+              <th scope="row">内容・特徴</th>
+              <td class="col-us">「まず話すだけ」から開始。本制作へ進めば全額充当。番組ディレクター本人が企画から編集まで一貫</td>
+              <td>撮影半日〜3日・写真20〜100枚をプランで固定。BGM・テロップ付き完成映像</td>
+              <td>写真スライドショー〜自宅撮影2日。お祝い事向けの構成。DVD/BD/MP4納品</td>
+              <td>本人→家族→友人へ取材を段階拡大。約5〜10分の完成映像・クラウド保管（年額）</td>
+              <td>終活カウンセラーが定型の質問リストでインタビュー。エンディングノート同梱</td>
+              <td>テレビ番組の実績スタッフと協働。プロナレーション・納期3〜4ヶ月</td>
+            </tr>
+            <tr>
+              <th scope="row">価格帯※</th>
+              <td class="col-us mm-price">5.5万〜（仮）<br>19.8万〜（仮）<br>49.8万〜（仮）</td>
+              <td class="mm-price">15.0万〜<br>43.5万</td>
+              <td class="mm-price">約6万〜<br>14万</td>
+              <td class="mm-price">11.9万〜<br>42.1万</td>
+              <td class="mm-price">38.5万</td>
+              <td class="mm-price">税別<br>50万〜</td>
             </tr>
           </tbody>
         </table>
