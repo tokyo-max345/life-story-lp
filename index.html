@@ -453,6 +453,7 @@
   .contact-form .btn { border: none; cursor: pointer; font-family: var(--sans); font-size: 0.95rem; width: 100%; }
   .form-alt { margin-top: 1.4rem; font-size: 0.92rem; color: var(--sumi-sub); }
   .form-alt a { color: var(--brass-light); }
+  .form-error { margin-top: 1.2rem; padding: 1rem 1.2rem; border: 1px solid #8a4a3a; border-radius: 2px; font-size: 0.9rem; color: #e8c0b0; }
   .form-privacy { margin-bottom: 1.3rem; font-size: 0.8rem; line-height: 1.9; color: var(--sumi-sub); }
   .form-privacy a { color: var(--brass-light); }
   .free-note { margin-top: 2.2rem; padding: 1.2rem 1.5rem; border: 1px solid #4a4335; border-radius: 2px; font-size: 0.9rem; color: var(--sumi-text); }
@@ -1033,12 +1034,8 @@
         <p class="serif-lines reveal">人は、いつかいなくなる。<br>だからこそ、その人がいたことを、未来に残したい。<br>声。表情。笑い方。言葉。そして、その人らしさ。<br>いつか、この映像を見返したとき。<br>そこには、<em>もう一度会いたい人</em><span class="nw">がいる。</span></p>
         <p class="reveal">「終活映像を作りませんか？」ではありません。<br>——一度、自分の人生について話してみませんか。</p>
         <p class="free-note reveal"><strong>ご相談・お見積りは無料です。</strong>料金が発生するのは、内容にご納得いただき正式にお申し込みいただいた後だけ。ご本人からも、ご家族からも。無理な営業は一切いたしません。</p>
-        <form class="contact-form reveal" action="https://formsubmit.co/info@akibaground.jp" method="POST">
-          <input type="hidden" name="_subject" value="【LIFE STORY】サイトからのご相談">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://lifestory.akibaground.jp/thanks.html?sent=1">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <form class="contact-form reveal" id="lp-contact" hidden>
+          <input type="text" name="akigra_hp_check" id="cf-hp" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-row">
             <label for="cf-name">お名前<span class="req">必須</span></label>
             <input type="text" id="cf-name" name="お名前" required autocomplete="name">
@@ -1065,10 +1062,14 @@
             <label for="cf-msg">メッセージ（任意）</label>
             <textarea id="cf-msg" name="メッセージ" placeholder="例）母の古希のお祝いに考えています。まず話だけ聞いてみたいです。"></textarea>
           </div>
-          <p class="form-privacy">送信いただいた内容は、株式会社アキグラの<a href="https://akibaground.jp/privacypolicy/" target="_blank" rel="noopener">プライバシーポリシー</a>に基づきお取り扱いします。フォームは外部送信サービス（FormSubmit）を経由して info@akibaground.jp に届きます。</p>
-          <button class="btn" type="submit">無料で相談する</button>
+          <p class="form-privacy">送信いただいた内容は、株式会社アキグラの<a href="https://akibaground.jp/privacypolicy/" target="_blank" rel="noopener">プライバシーポリシー</a>に基づきお取り扱いします。送信ボタンを押すと、運営会社サイト（akibaground.jp）の問い合わせ窓口 info@akibaground.jp に届きます。</p>
+          <button class="btn" type="submit" id="cf-submit">無料で相談する</button>
+          <p class="form-error" id="cf-error" hidden>送信できませんでした。お手数ですが、時間をおいて再度お試しいただくか、info@akibaground.jp へ直接メールをお送りください。</p>
           <p class="form-alt">フォームが苦手な方は、メールでもどうぞ：<a href="mailto:info@akibaground.jp?subject=LIFE%20STORY%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">info@akibaground.jp</a></p>
         </form>
+        <noscript>
+          <p class="free-note" style="margin-top:1.6rem;">お使いの環境ではフォームをご利用いただけません。お手数ですが <a href="mailto:info@akibaground.jp?subject=LIFE%20STORY%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" style="color:var(--brass-light);">info@akibaground.jp</a> へ直接メールでご相談ください（お名前とご相談内容をお書き添えください）。</p>
+        </noscript>
       </div>
       <figure class="closing-figure reveal">
         <div class="ph-hover"><img src="assets/img13.jpg" alt="古いアルバムの上で重ねられた、若い手と年を重ねた手" loading="lazy" width="900" height="1117"></div>
@@ -1101,6 +1102,46 @@
   </div>
 </footer>
 
+<script>
+  // 相談フォーム: 運営会社サイト(akibaground.jp)のCF7へクロスオリジン送信（CORS実測済・info@着信実証済）
+  // JS必須のためフォームはhiddenで置き、ここで表示に切り替える（no-JSはnoscriptのメール案内が出る=無言ロス経路なし）
+  (function () {
+    var form = document.getElementById("lp-contact");
+    if (!form) return;
+    form.hidden = false;
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var btn = document.getElementById("cf-submit");
+      var err = document.getElementById("cf-error");
+      err.hidden = true;
+      btn.disabled = true;
+      var orig = btn.textContent;
+      btn.textContent = "送信しています…";
+      var fd = new FormData();
+      fd.append("your-name", document.getElementById("cf-name").value);
+      fd.append("your-email", document.getElementById("cf-email").value);
+      fd.append("your-tel", document.getElementById("cf-tel").value);
+      fd.append("your-category", "その他");
+      fd.append("your-message",
+        "【LIFE STORYサイトからのご相談】\n" +
+        "ご相談の種類: " + document.getElementById("cf-type").value + "\n\n" +
+        (document.getElementById("cf-msg").value || "（メッセージなし）"));
+      fd.append("your-consent", "1");
+      fd.append("akigra_hp_check", document.getElementById("cf-hp").value);
+      fd.append("_wpcf7_unit_tag", "wpcf7-lifestory-lp");
+      fetch("https://akibaground.jp/wp-json/contact-form-7/v1/contact-forms/22/feedback", { method: "POST", body: fd })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (j && j.status === "mail_sent") {
+            window.location.href = "thanks.html?sent=1";
+          } else {
+            err.hidden = false; btn.disabled = false; btn.textContent = orig;
+          }
+        })
+        .catch(function () { err.hidden = false; btn.disabled = false; btn.textContent = orig; });
+    });
+  })();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
