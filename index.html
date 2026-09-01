@@ -149,15 +149,6 @@
   .ask-copy .acts { margin-top: 2.4rem; font-family: var(--serif); font-size: 1.12rem; line-height: 2.3; color: var(--ink); }
   .ask-copy .acts em { font-style: normal; border-bottom: 1px solid var(--brass); padding-bottom: 2px; }
 
-  /* ===== エビデンス ===== */
-  .evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
-  .evidence-cell { padding: 3rem 2.5rem; }
-  .evidence-cell + .evidence-cell { border-left: 1px solid var(--line); }
-  .evidence-cell .stat { font-family: var(--serif); font-size: clamp(2.6rem, 5.5vw, 4rem); color: var(--brass); line-height: 1.1; font-variant-numeric: tabular-nums; }
-  .evidence-cell .stat small { font-size: 0.4em; color: var(--ink-sub); letter-spacing: 0.1em; }
-  .evidence-cell h3 { margin-top: 1rem; font-size: 1.05rem; }
-  .evidence-cell p { margin-top: 0.8rem; font-size: 0.9rem; color: var(--ink-sub); }
-
   /* ===== ディレクター ===== */
   .director-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center; }
   .director-figure .ph { position: relative; }
@@ -197,6 +188,10 @@
   .plan { padding: 2.8rem 2.2rem 3rem; display: flex; flex-direction: column; }
   .plan + .plan { border-left: 1px solid var(--line); }
   .plan.featured { background: var(--paper-deep); }
+  /* 3カラムの tier/名称/概要/価格/内容 を横で行揃え（価格ズレ防止） */
+  @supports (grid-template-rows: subgrid) {
+    .plan { display: grid; grid-template-rows: subgrid; grid-row: span 5; align-content: start; }
+  }
   .plan .tier { font-size: 0.72rem; letter-spacing: 0.26em; color: var(--brass); }
   .plan h3 { font-size: 1.25rem; margin-top: 0.7rem; line-height: 1.5; }
   .plan .concept { font-size: 0.86rem; color: var(--ink-sub); margin-top: 0.4rem; }
@@ -233,6 +228,7 @@
   .cmp-us, .cmp-them { text-align: center; }
   .cmp-us { background: rgba(138, 84, 16, 0.07); border-left: 2px solid var(--brass); border-right: 2px solid var(--brass); }
   .cmp-row:last-child .cmp-us { border-bottom: 2px solid var(--brass); }
+  .coltag { display: none; }
   .mk { font-family: var(--serif); font-size: 1.8rem; line-height: 1; display: block; margin-bottom: 0.55rem; }
   .cmp-us .mk { color: var(--brass); }
   .cmp-them .mk { color: var(--line-strong); }
@@ -240,6 +236,22 @@
   .cmp-us p { font-weight: 500; }
   .cmp-them { color: var(--ink-sub); }
   .cm-cta { margin-top: 2.8rem; text-align: center; }
+
+  /* 市場マップ表（詳細層・v6準拠） */
+  .market-map { margin-top: 4rem; }
+  .mm-title { font-size: 1.15rem; margin-bottom: 1.4rem; }
+  .mm-hint { display: none; font-size: 0.72rem; color: var(--ink-sub); letter-spacing: 0.1em; margin: -0.8rem 0 0.6rem; }
+  .mm-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .mm-table { width: 100%; min-width: 760px; border-collapse: collapse; background: var(--paper); border-top: 2px solid var(--ink); font-size: 0.86rem; line-height: 1.75; }
+  .mm-table thead th { font-size: 0.72rem; letter-spacing: 0.14em; color: var(--ink-sub); text-align: left; font-weight: 500; padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--line-strong); }
+  .mm-table tbody th, .mm-table tbody td { padding: 1.15rem 1.1rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; color: var(--ink-sub); font-weight: 400; }
+  .mm-table tbody th { font-family: var(--serif); font-weight: 600; color: var(--ink); white-space: nowrap; }
+  .mm-table tbody th span { display: block; font-family: var(--sans); font-size: 0.68rem; color: var(--ink-sub); font-weight: 400; letter-spacing: 0.08em; margin-top: 0.25rem; }
+  .mm-table .mm-price { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .mm-us { background: rgba(138, 84, 16, 0.09); }
+  .mm-us th { border-left: 3px solid var(--brass); }
+  .mm-us th, .mm-us td { border-bottom: 2px solid var(--brass); color: var(--ink); }
+  .mm-us th span { color: var(--brass); font-weight: 700; }
 
   /* ===== 選ばれる理由（漢数字の大タイポ） ===== */
   .reasons { list-style: none; counter-reset: none; }
@@ -340,9 +352,8 @@
     .issue-answer { position: static; }
     .flow-item { grid-template-columns: 1fr; gap: 1.8rem; padding: 2.6rem 0; }
     .flow-item:nth-child(even) .flow-figure { order: 0; }
-    .evidence-grid { grid-template-columns: 1fr; }
-    .evidence-cell + .evidence-cell { border-left: none; border-top: 1px solid var(--line); }
     .plans { grid-template-columns: 1fr; }
+    .plan { display: flex; grid-row: auto; }
     .plan + .plan { border-left: none; border-top: 1px solid var(--line); }
     .reason { grid-template-columns: 3.5rem 1fr; gap: 1.5rem; }
     .reason .kan { font-size: 2.4rem; }
@@ -355,10 +366,10 @@
     .cmp-row { grid-template-columns: 1fr 1fr; }
     .cmp-row > div { padding: 1.1rem 0.9rem; }
     .cmp-label { grid-column: 1 / -1; padding-bottom: 0.4rem; color: var(--ink-sub); font-size: 0.85rem; letter-spacing: 0.14em; }
-    .cmp-us::before, .cmp-them::before { display: block; font-size: 0.66rem; letter-spacing: 0.18em; margin-bottom: 0.7rem; }
-    .cmp-us::before { content: "LIFE STORY"; color: var(--brass); font-weight: 700; }
-    .cmp-them::before { content: "一般的なサービス※"; color: var(--ink-sub); }
+    .coltag { display: block; font-size: 0.66rem; letter-spacing: 0.18em; margin-bottom: 0.7rem; color: var(--ink-sub); }
+    .coltag-us { color: var(--brass); font-weight: 700; }
     .cmp-us p br, .cmp-them p br { display: none; }
+    .mm-hint { display: block; }
     .cmp-us p, .cmp-them p { font-size: 0.82rem; }
     .mk { font-size: 1.5rem; }
   }
@@ -446,30 +457,10 @@
   </div>
 </section>
 
-<!-- ===== 05 EVIDENCE ===== -->
+<!-- ===== 05 DIRECTOR ===== -->
 <section>
   <div class="wrap">
-    <div class="chapter"><span class="no">05</span><span class="label">Evidence</span><span class="jp">「向き合う時間」の裏付け</span></div>
-    <div class="evidence-grid">
-      <div class="evidence-cell reveal">
-        <p class="stat">g = 1.41</p>
-        <h3>回想法（ライフレビュー）</h3>
-        <p>高齢者のうつに対する効果は、2024年のメタ分析（42研究・3,361人）で大きな効果量が確認されています。過去を語り、聞き手と共有するプロセスが、心理的な安定につながる。</p>
-      </div>
-      <div class="evidence-cell reveal">
-        <p class="stat">約90<small>%</small></p>
-        <h3>ディグニティセラピー</h3>
-        <p>終末期の患者に人生を語らせ、「世代継承文書」として家族に渡す心理療法。約90%という高い満足度が一貫して報告されています。</p>
-      </div>
-    </div>
-    <p class="note reveal" style="margin-top:1.6rem;">※ 本サービスは医療・心理療法の提供ではなく、上記の研究知見はサービス思想の背景として紹介するものです。本サービスによる心理的効果を保証するものではありません。<br>出典: Lin J, et al. (2024) <em>Journal of Affective Disorders</em>（回想法・ライフレビューの高齢期うつに関するメタ分析・42研究3,361人・g=1.41）／ Chochinov HM, et al. (2005) <em>Journal of Clinical Oncology</em>（ディグニティセラピー）</p>
-  </div>
-</section>
-
-<!-- ===== 06 DIRECTOR ===== -->
-<section>
-  <div class="wrap">
-    <div class="chapter"><span class="no">06</span><span class="label">Track Record</span><span class="jp">取材する人</span></div>
+    <div class="chapter"><span class="no">05</span><span class="label">Track Record</span><span class="jp">取材する人</span></div>
     <div class="director-grid">
       <figure class="director-figure reveal">
         <div class="ph ph-hover"><img src="assets/img3.jpg" alt="自宅のリビングでカメラとマイクを前にインタビューに答える高齢の女性" loading="lazy" width="1200" height="675"></div>
@@ -487,10 +478,10 @@
   </div>
 </section>
 
-<!-- ===== 07 SERVICE FLOW ===== -->
+<!-- ===== 06 SERVICE FLOW ===== -->
 <section>
   <div class="wrap">
-    <div class="chapter"><span class="no">07</span><span class="label">Service Flow</span><span class="jp">LIFE STORY SESSION の流れ</span></div>
+    <div class="chapter"><span class="no">06</span><span class="label">Service Flow</span><span class="jp">LIFE STORY SESSION の流れ</span></div>
 
     <div class="flow-item">
       <div class="flow-copy">
@@ -554,10 +545,10 @@
   </div>
 </section>
 
-<!-- ===== 08 PLANS ===== -->
+<!-- ===== 07 PLANS ===== -->
 <section>
   <div class="wrap">
-    <div class="chapter"><span class="no">08</span><span class="label">Service Lineup</span><span class="jp">3つのサービスライン</span></div>
+    <div class="chapter"><span class="no">07</span><span class="label">Service Lineup</span><span class="jp">3つのサービスライン</span></div>
     <div class="plans">
       <div class="plan reveal">
         <p class="tier">ENTRY</p>
@@ -609,14 +600,14 @@
   </div>
 </section>
 
-<!-- ===== 09 COMPARISON（結論ドーン→詳細） ===== -->
+<!-- ===== 08 COMPARISON（結論ドーン→詳細） ===== -->
 <section class="compare">
   <div class="wrap">
-    <div class="chapter"><span class="no">09</span><span class="label">Comparison</span><span class="jp">比べてください</span></div>
+    <div class="chapter"><span class="no">08</span><span class="label">Comparison</span><span class="jp">比べてください</span></div>
 
     <div class="cm-verdict">
       <div>
-        <h2 class="reveal">入口は<em>5.5万円</em>。<br>しかも<em>全額充当</em>で、<br>1円も無駄にしない。</h2>
+        <h2 class="reveal">入口は<em>5.5万円</em>。<br>進めば<em>全額充当</em>で、<br>1円も無駄にならない。</h2>
         <p class="cm-sub reveal">一般的な自分史映像サービスは、最初から本制作の契約（調査範囲では約6万〜50万円超）から始まります。LIFE STORY はまず「話すだけ」から始められ、その料金は本制作へ進めば全額が制作費に充当されます。この入口と充当の仕組みを持つサービスは、調査範囲では他に見当たりませんでした※。</p>
       </div>
       <div class="cm-card reveal">
@@ -634,39 +625,101 @@
       </div>
       <div class="cmp-row">
         <div class="cmp-label">始めやすさ</div>
-        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>まず「話すだけ」<br>55,000円〜（仮）</p></div>
-        <div class="cmp-them"><span class="mk" aria-hidden="true">△</span><p>最初から本制作を契約<br>（約6万〜50万円超）</p></div>
+        <div class="cmp-us"><span class="coltag coltag-us">LIFE STORY</span><span class="mk" aria-hidden="true">◎</span><p>まず「話すだけ」<br>55,000円〜（仮）</p></div>
+        <div class="cmp-them"><span class="coltag">一般的なサービス※</span><span class="mk" aria-hidden="true">△</span><p>最初から本制作を契約<br>（約6万〜50万円超）</p></div>
       </div>
       <div class="cmp-row">
         <div class="cmp-label">費用のゆくえ</div>
-        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>本制作へ進めば全額充当<br>＝無駄にならない</p></div>
-        <div class="cmp-them"><span class="mk" aria-hidden="true">—</span><p>充当の仕組みは<br>調査範囲では見当たらず</p></div>
+        <div class="cmp-us"><span class="coltag coltag-us">LIFE STORY</span><span class="mk" aria-hidden="true">◎</span><p>本制作へ進めば全額充当<br>＝無駄にならない</p></div>
+        <div class="cmp-them"><span class="coltag">一般的なサービス※</span><span class="mk" aria-hidden="true">—</span><p>充当の仕組みは<br>調査範囲では見当たらず</p></div>
       </div>
       <div class="cmp-row">
         <div class="cmp-label">映像の長さ</div>
-        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>「何を残したいか」<br>人生から逆算して決める</p></div>
-        <div class="cmp-them"><span class="mk" aria-hidden="true">△</span><p>5分/10分/20分など<br>分数・日数の固定プラン</p></div>
+        <div class="cmp-us"><span class="coltag coltag-us">LIFE STORY</span><span class="mk" aria-hidden="true">◎</span><p>「何を残したいか」<br>人生から逆算して決める</p></div>
+        <div class="cmp-them"><span class="coltag">一般的なサービス※</span><span class="mk" aria-hidden="true">△</span><p>5分/10分/20分など<br>分数・日数の固定プラン</p></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-label">写真・撮影の枠</div>
+        <div class="cmp-us"><span class="coltag coltag-us">LIFE STORY</span><span class="mk" aria-hidden="true">◎</span><p>枚数・日数を<br>先に固定しない</p></div>
+        <div class="cmp-them"><span class="coltag">一般的なサービス※</span><span class="mk" aria-hidden="true">△</span><p>写真20〜100枚・撮影半日〜3日<br>などプランで固定</p></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-label">構成・編集</div>
+        <div class="cmp-us"><span class="coltag coltag-us">LIFE STORY</span><span class="mk" aria-hidden="true">◎</span><p>一人ひとりオリジナルの<br>構成・編集（全国放送基準）</p></div>
+        <div class="cmp-them"><span class="coltag">一般的なサービス※</span><span class="mk" aria-hidden="true">△</span><p>定型テンプレートに<br>沿った編集も</p></div>
       </div>
       <div class="cmp-row">
         <div class="cmp-label">取材する人</div>
-        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>現役の番組ディレクター本人が<br>企画から編集まで一貫</p></div>
-        <div class="cmp-them"><span class="mk" aria-hidden="true">△</span><p>制作スタッフや<br>外部ネットワークによる分業も</p></div>
+        <div class="cmp-us"><span class="coltag coltag-us">LIFE STORY</span><span class="mk" aria-hidden="true">◎</span><p>現役の番組ディレクター本人が<br>企画から編集まで一貫</p></div>
+        <div class="cmp-them"><span class="coltag">一般的なサービス※</span><span class="mk" aria-hidden="true">△</span><p>制作スタッフや<br>外部ネットワークによる分業も</p></div>
       </div>
       <div class="cmp-row">
-        <div class="cmp-label">もしもの後</div>
-        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>データの保存・逝去後の扱いまで<br>契約前に文書で明示</p></div>
-        <div class="cmp-them"><span class="mk" aria-hidden="true">△</span><p>明示の範囲は<br>社により異なる</p></div>
+        <div class="cmp-label">データの引き継ぎ</div>
+        <div class="cmp-us"><span class="coltag coltag-us">LIFE STORY</span><span class="mk" aria-hidden="true">◎</span><p>保存から将来の引き継ぎまで<br>契約前に文書で明示</p></div>
+        <div class="cmp-them"><span class="coltag">一般的なサービス※</span><span class="mk" aria-hidden="true">△</span><p>明示の範囲は<br>社により異なる</p></div>
       </div>
     </div>
     <p class="note reveal" style="margin-top:1.4rem;">※「一般的な自分史映像サービス」は、自分史映像・終活映像の主要5社の公開情報（2026年8月時点・当社調べ・実ページ確認）をまとめた傾向です。各社のサービス内容・条件は異なり、単純な優劣を示すものではありません。当社の価格・条件はすべて仮のものです。</p>
+
+    <div class="market-map reveal">
+      <h3 class="mm-title serif">さらに詳しく — 主要5社との比較マップ</h3>
+      <p class="mm-hint" aria-hidden="true">→ 表は横にスクロールできます</p>
+      <div class="mm-scroll">
+        <table class="mm-table">
+          <thead>
+            <tr><th scope="col">社</th><th scope="col">サービスの型</th><th scope="col">内容・特徴</th><th scope="col">価格帯※</th></tr>
+          </thead>
+          <tbody>
+            <tr class="mm-us">
+              <th scope="row">LIFE STORY<span>当サービス</span></th>
+              <td>人生から逆算＋充当型</td>
+              <td>「まず話すだけ」から始まり、本制作へ進めば全額充当。現役の番組ディレクター本人が企画から取材・編集まで一貫</td>
+              <td class="mm-price">5.5万〜（仮）<br>19.8万〜（仮）<br>49.8万〜（仮）</td>
+            </tr>
+            <tr>
+              <th scope="row">A社<span>自分史映像専業</span></th>
+              <td>分数固定プラン<br>（5分/10分/20分）</td>
+              <td>インタビュー撮影 半日〜3日・写真20〜100枚をプランで固定。BGM・テロップ・ナレーション付き完成映像</td>
+              <td class="mm-price">15.0万〜43.5万</td>
+            </tr>
+            <tr>
+              <th scope="row">B社<span>家族ギフト映像</span></th>
+              <td>撮影日数プラン</td>
+              <td>写真スライドショー〜自宅撮影2日。お祝い事（還暦・記念日）向けの構成。DVD/BD/MP4納品</td>
+              <td class="mm-price">約6万〜14万</td>
+            </tr>
+            <tr>
+              <th scope="row">C社<span>思い出ビデオ</span></th>
+              <td>分数＋撮影日数プラン</td>
+              <td>本人→家族→友人へ取材を段階拡大。約5〜10分の完成映像・クラウド保管（年額）</td>
+              <td class="mm-price">11.9万〜42.1万</td>
+            </tr>
+            <tr>
+              <th scope="row">D社<span>終活専門家×映像</span></th>
+              <td>単一プラン</td>
+              <td>終活カウンセラーが定型の質問リストでインタビュー。エンディングノート同梱・終活相談つき</td>
+              <td class="mm-price">38.5万</td>
+            </tr>
+            <tr>
+              <th scope="row">E社<span>ドキュメンタリー型</span></th>
+              <td>ネットワーク型</td>
+              <td>テレビ番組の実績スタッフと協働する制作ネットワーク。プロナレーション・納期3〜4ヶ月</td>
+              <td class="mm-price">税別50万〜</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:1.2rem;">※ 2026年8月時点・当社調べ（5社・実ページ確認の要約・匿名化）。価格は各社サイト掲載時点の値で、税込/税別の表記は各社サイトの掲載に準拠しています。内容・条件は各社異なるため単純な優劣比較はできません。</p>
+    </div>
+
     <div class="cm-cta reveal"><a class="btn" href="#cta">まず、話してみる</a></div>
   </div>
 </section>
 
-<!-- ===== 10 REASONS ===== -->
+<!-- ===== 09 REASONS ===== -->
 <section>
   <div class="wrap">
-    <div class="chapter"><span class="no">10</span><span class="label">Why Life Story</span><span class="jp">選ばれる理由</span></div>
+    <div class="chapter"><span class="no">09</span><span class="label">Why Life Story</span><span class="jp">選ばれる理由</span></div>
     <ul class="reasons">
       <li class="reason reveal">
         <span class="kan" aria-hidden="true">一</span>
@@ -693,10 +746,10 @@
   </div>
 </section>
 
-<!-- ===== 11 GIFT ===== -->
+<!-- ===== 10 GIFT ===== -->
 <section class="gift">
   <div class="wrap">
-    <div class="chapter"><span class="no">11</span><span class="label">Gift Milestone</span><span class="jp">動く記念写真</span></div>
+    <div class="chapter"><span class="no">10</span><span class="label">Gift Milestone</span><span class="jp">動く記念写真</span></div>
     <div class="gift-grid">
       <div class="gift-copy">
         <h2 class="reveal">「親に、何を贈ろう。」<br>——その答えを、人生の映像に。</h2>
@@ -718,10 +771,10 @@
   </div>
 </section>
 
-<!-- ===== 12 TERMS ===== -->
+<!-- ===== 11 TERMS ===== -->
 <section>
   <div class="wrap">
-    <div class="chapter"><span class="no">12</span><span class="label">Delivery &amp; Terms</span><span class="jp">制作期間・納品・お支払い</span></div>
+    <div class="chapter"><span class="no">11</span><span class="label">Delivery &amp; Terms</span><span class="jp">制作期間・納品・お支払い</span></div>
     <div class="terms-grid">
       <div class="term reveal">
         <h3>制作期間の目安（仮）</h3>
@@ -737,16 +790,16 @@
       </div>
       <div class="term reveal">
         <h3>権利とプライバシー</h3>
-        <p>著作権・肖像権の帰属、撮影データの保存・削除、ご本人逝去後の公開範囲・ご家族への引き継ぎまで、契約前に文書で明示します。</p>
+        <p>著作権・肖像権の帰属、撮影データの保存・削除、将来の公開範囲・ご家族への引き継ぎまで、契約前に文書で明示します。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 13 CLOSING + CTA ===== -->
+<!-- ===== 12 CLOSING + CTA ===== -->
 <section class="closing" id="cta">
   <div class="wrap">
-    <div class="chapter"><span class="no">13</span><span class="label">Closing</span><span class="jp">最初の一歩</span></div>
+    <div class="chapter"><span class="no">12</span><span class="label">Closing</span><span class="jp">最初の一歩</span></div>
     <div class="closing-grid">
       <div class="closing-copy">
         <p class="serif-lines reveal">人は、いつかいなくなる。<br>だからこそ、その人がいたことを、未来に残したい。<br>声。表情。笑い方。言葉。そして、その人らしさ。<br>いつか、この映像を見返したとき。<br>そこには、<em>もう一度会いたい人</em>がいる。</p>
@@ -769,7 +822,6 @@
     <div class="foot-notes">
       <p>※ 記載の価格・制作期間・支払条件はすべて仮のもので、正式なご提供条件は今後の事業設計により確定します。</p>
       <p>※ 競合比較に関する記述は2026年8月時点の当社調べによるもので、「調査範囲では」の限定を付しています。</p>
-      <p>※ 本サービスは医療・心理療法の提供ではありません。回想法・ディグニティセラピーに関する研究知見は、サービス思想の背景としてご紹介しています。</p>
       <p>※ 本ページの写真はサービスイメージです。</p>
     </div>
     <div class="foot-brand">
