@@ -36,9 +36,9 @@
       "provider": { "@id": "https://akibaground.jp/#organization" },
       "areaServed": "JP",
       "offers": [
-        { "@type": "Offer", "name": "LIFE STORY SESSION", "price": "55000", "priceCurrency": "JPY" },
-        { "@type": "Offer", "name": "LIFE STORY", "price": "198000", "priceCurrency": "JPY" },
-        { "@type": "Offer", "name": "LIFE STORY DOCUMENTARY", "price": "498000", "priceCurrency": "JPY" }
+        { "@type": "Offer", "name": "LIFE STORY SESSION", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 55000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true } },
+        { "@type": "Offer", "name": "LIFE STORY", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 198000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true } },
+        { "@type": "Offer", "name": "LIFE STORY DOCUMENTARY", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 498000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true } }
       ]
     }
   ]
@@ -437,8 +437,8 @@
   /* ===== 相談フォーム（暗転面上） ===== */
   .contact-form { margin-top: 3rem; max-width: 40em; }
   .contact-form .form-row { margin-bottom: 1.4rem; }
-  .contact-form label { display: block; font-size: 0.82rem; letter-spacing: 0.12em; color: var(--sumi-sub); margin-bottom: 0.5rem; }
-  .contact-form label .req { color: var(--brass-light); font-size: 0.72rem; margin-left: 0.5rem; }
+  .contact-form label { display: block; font-size: 0.95rem; letter-spacing: 0.12em; color: var(--sumi-text); margin-bottom: 0.5rem; }
+  .contact-form label .req { color: var(--brass-light); font-size: 0.8rem; margin-left: 0.5rem; }
   .contact-form input[type="text"], .contact-form input[type="email"], .contact-form input[type="tel"],
   .contact-form select, .contact-form textarea {
     width: 100%; padding: 0.85rem 1rem; font-size: 16px; font-family: var(--sans);
@@ -451,8 +451,10 @@
     outline: 2px solid var(--brass-light); outline-offset: 1px;
   }
   .contact-form .btn { border: none; cursor: pointer; font-family: var(--sans); font-size: 0.95rem; width: 100%; }
-  .form-alt { margin-top: 1.4rem; font-size: 0.82rem; color: var(--sumi-sub); }
+  .form-alt { margin-top: 1.4rem; font-size: 0.92rem; color: var(--sumi-sub); }
   .form-alt a { color: var(--brass-light); }
+  .form-privacy { margin-bottom: 1.3rem; font-size: 0.8rem; line-height: 1.9; color: var(--sumi-sub); }
+  .form-privacy a { color: var(--brass-light); }
   .free-note { margin-top: 2.2rem; padding: 1.2rem 1.5rem; border: 1px solid #4a4335; border-radius: 2px; font-size: 0.9rem; color: var(--sumi-text); }
   .free-note strong { color: var(--brass-light); font-weight: 700; }
 
@@ -496,6 +498,9 @@
   }
   @media (max-width: 560px) {
     .gift-steps { grid-template-columns: 1fr; }
+    /* 章ヘッダーの3要素は狭幅で折返しを許可（圧縮潰れ防止） */
+    .chapter { flex-wrap: wrap; row-gap: 0.2rem; }
+    .chapter .jp { margin-left: 0; flex-basis: 100%; }
   }
   @media (max-width: 360px) {
     /* 320px幅で「あなた自身の声で」(nowrap 8字)が収まるようにH1を一段絞る */
@@ -1032,7 +1037,7 @@
           <input type="hidden" name="_subject" value="【LIFE STORY】サイトからのご相談">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://lifestory.akibaground.jp/thanks.html">
+          <input type="hidden" name="_next" value="https://lifestory.akibaground.jp/thanks.html?sent=1">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-row">
             <label for="cf-name">お名前<span class="req">必須</span></label>
@@ -1060,6 +1065,7 @@
             <label for="cf-msg">メッセージ（任意）</label>
             <textarea id="cf-msg" name="メッセージ" placeholder="例）母の古希のお祝いに考えています。まず話だけ聞いてみたいです。"></textarea>
           </div>
+          <p class="form-privacy">送信いただいた内容は、株式会社アキグラの<a href="https://akibaground.jp/privacypolicy/" target="_blank" rel="noopener">プライバシーポリシー</a>に基づきお取り扱いします。フォームは外部送信サービス（FormSubmit）を経由して info@akibaground.jp に届きます。</p>
           <button class="btn" type="submit">無料で相談する</button>
           <p class="form-alt">フォームが苦手な方は、メールでもどうぞ：<a href="mailto:info@akibaground.jp?subject=LIFE%20STORY%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">info@akibaground.jp</a></p>
         </form>

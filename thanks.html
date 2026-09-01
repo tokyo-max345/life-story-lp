@@ -16,6 +16,10 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-7ML99F8QBK');
+  // フォーム経由の着地(?sent=1)のみCVイベント発火（直接訪問・再読込と区別）
+  if (new URLSearchParams(location.search).get('sent') === '1') {
+    gtag('event', 'form_complete', { form_name: 'lifestory_contact' });
+  }
 </script>
 <style>
   :root { --paper:#f5f1e8; --ink:#262019; --ink-sub:#675d4e; --line-strong:#b3a68c; --brass:#8a5410; }
