@@ -1101,6 +1101,15 @@
       <p>※ 本ページの写真はサービスイメージです。</p>
     </div>
     <div class="foot-company">
+      <nav class="foot-links" aria-label="読みもの" style="margin-bottom:1.6rem;">
+        <a href="/jibunshi/">自分史動画の制作</a>
+        <a href="/shukatsu/">終活動画という選択肢</a>
+        <a href="/gift/">長寿祝いギフトガイド</a>
+        <a href="/oya/">親の人生を残す</a>
+        <a href="/flow/">制作の流れ</a>
+        <a href="/faq/">よくある不安と回答</a>
+        <a href="/producer/">プロデューサー紹介</a>
+      </nav>
       <p class="fc-name">運営：株式会社アキグラ（LIFE STORY は株式会社アキグラの提供サービス・屋号です）</p>
       <p>代表取締役：中井 敦　／　所在地：〒160-0022 東京都新宿区新宿5-10-8　／　お問い合わせ：info@akibaground.jp</p>
       <nav class="foot-links" aria-label="運営会社の関連ページ">
@@ -1147,9 +1156,11 @@
       fd.append("your-email", document.getElementById("cf-email").value);
       fd.append("your-tel", document.getElementById("cf-tel").value);
       fd.append("your-category", "その他");
+      var fromArticle = new URLSearchParams(window.location.search).get("from");
       fd.append("your-message",
         "【LIFE STORYサイトからのご相談】\n" +
-        "ご相談の種類: " + document.getElementById("cf-type").value + "\n\n" +
+        "ご相談の種類: " + document.getElementById("cf-type").value + "\n" +
+        (fromArticle ? "ご覧の記事: " + fromArticle + "\n" : "") + "\n" +
         (document.getElementById("cf-msg").value || "（メッセージなし）"));
       fd.append("your-consent", "1");
       fd.append("akigra_hp_check", document.getElementById("cf-hp").value);
