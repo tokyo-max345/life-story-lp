@@ -208,6 +208,39 @@
   .plan-upgrade p { font-size: 0.92rem; }
   .plan-upgrade strong { font-weight: 700; }
 
+  /* ===== 比較（09: 結論ドーン→詳細表） ===== */
+  .compare { background: var(--paper-deep); }
+  .cm-verdict { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 4rem; align-items: center; margin-bottom: 4.5rem; }
+  .cm-verdict h2 { font-size: clamp(1.7rem, 3.4vw, 2.35rem); line-height: 1.7; }
+  .cm-verdict h2 em { font-style: normal; color: var(--brass); }
+  .cm-verdict .cm-sub { margin-top: 1.6rem; color: var(--ink-sub); max-width: 30em; }
+  .cm-card { background: var(--paper); border: 1px solid var(--line-strong); border-radius: 2px; padding: 2.6rem 2.4rem; text-align: center; position: relative; }
+  .cm-card::after { content: ""; position: absolute; inset: 0; border: 1px solid var(--line-strong); border-radius: 2px; transform: translate(12px, 12px); z-index: -1; }
+  .cm-card .lbl { font-size: 0.74rem; letter-spacing: 0.26em; color: var(--brass); }
+  .cm-card .big { font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 4rem); line-height: 1.15; margin-top: 0.7rem; font-variant-numeric: tabular-nums; }
+  .cm-card .big small { font-size: 0.34em; color: var(--ink-sub); letter-spacing: 0.06em; }
+  .cm-card .plus { margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--line); font-family: var(--serif); font-size: 1.05rem; color: var(--brass-deep); }
+
+  .cmp-table { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line-strong); background: var(--paper); }
+  .cmp-head, .cmp-row { display: grid; grid-template-columns: 0.72fr 1.18fr 1fr; }
+  .cmp-head > div { padding: 1.1rem 1.4rem; }
+  .cmp-head .h-us { background: var(--brass); color: #faf6ec; font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.2em; text-align: center; }
+  .cmp-head .h-us small { display: block; font-family: var(--sans); font-size: 0.64rem; letter-spacing: 0.28em; opacity: 0.85; margin-top: 0.2rem; }
+  .cmp-head .h-them { color: var(--ink-sub); text-align: center; align-self: end; font-size: 0.82rem; letter-spacing: 0.1em; }
+  .cmp-row { border-top: 1px solid var(--line); }
+  .cmp-row > div { padding: 1.5rem 1.4rem; }
+  .cmp-label { font-family: var(--serif); font-size: 0.98rem; align-self: center; }
+  .cmp-us, .cmp-them { text-align: center; }
+  .cmp-us { background: rgba(138, 84, 16, 0.07); border-left: 2px solid var(--brass); border-right: 2px solid var(--brass); }
+  .cmp-row:last-child .cmp-us { border-bottom: 2px solid var(--brass); }
+  .mk { font-family: var(--serif); font-size: 1.8rem; line-height: 1; display: block; margin-bottom: 0.55rem; }
+  .cmp-us .mk { color: var(--brass); }
+  .cmp-them .mk { color: var(--line-strong); }
+  .cmp-us p, .cmp-them p { font-size: 0.9rem; line-height: 1.75; }
+  .cmp-us p { font-weight: 500; }
+  .cmp-them { color: var(--ink-sub); }
+  .cm-cta { margin-top: 2.8rem; text-align: center; }
+
   /* ===== 選ばれる理由（漢数字の大タイポ） ===== */
   .reasons { list-style: none; counter-reset: none; }
   .reason {
@@ -302,6 +335,8 @@
     .hero-side { display: none; }
     .hero-figure { max-width: 30rem; }
     .q-grid, .issue-grid, .ask-flow, .director-grid, .gift-grid, .closing-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .cm-verdict { grid-template-columns: 1fr; gap: 3rem; margin-bottom: 3.5rem; }
+    .cm-card { max-width: 26rem; }
     .issue-answer { position: static; }
     .flow-item { grid-template-columns: 1fr; gap: 1.8rem; padding: 2.6rem 0; }
     .flow-item:nth-child(even) .flow-figure { order: 0; }
@@ -314,6 +349,18 @@
     .milestones { grid-template-columns: 1fr; }
     .terms-grid { grid-template-columns: 1fr; }
     .term:nth-child(odd) { border-right: none; }
+  }
+  @media (max-width: 760px) {
+    .cmp-head { display: none; }
+    .cmp-row { grid-template-columns: 1fr 1fr; }
+    .cmp-row > div { padding: 1.1rem 0.9rem; }
+    .cmp-label { grid-column: 1 / -1; padding-bottom: 0.4rem; color: var(--ink-sub); font-size: 0.85rem; letter-spacing: 0.14em; }
+    .cmp-us::before, .cmp-them::before { display: block; font-size: 0.66rem; letter-spacing: 0.18em; margin-bottom: 0.7rem; }
+    .cmp-us::before { content: "LIFE STORY"; color: var(--brass); font-weight: 700; }
+    .cmp-them::before { content: "一般的なサービス※"; color: var(--ink-sub); }
+    .cmp-us p br, .cmp-them p br { display: none; }
+    .cmp-us p, .cmp-them p { font-size: 0.82rem; }
+    .mk { font-size: 1.5rem; }
   }
 </style>
 </head>
@@ -562,10 +609,64 @@
   </div>
 </section>
 
-<!-- ===== 09 REASONS ===== -->
+<!-- ===== 09 COMPARISON（結論ドーン→詳細） ===== -->
+<section class="compare">
+  <div class="wrap">
+    <div class="chapter"><span class="no">09</span><span class="label">Comparison</span><span class="jp">比べてください</span></div>
+
+    <div class="cm-verdict">
+      <div>
+        <h2 class="reveal">入口は<em>5.5万円</em>。<br>しかも<em>全額充当</em>で、<br>1円も無駄にしない。</h2>
+        <p class="cm-sub reveal">一般的な自分史映像サービスは、最初から本制作の契約（調査範囲では約6万〜50万円超）から始まります。LIFE STORY はまず「話すだけ」から始められ、その料金は本制作へ進めば全額が制作費に充当されます。この入口と充当の仕組みを持つサービスは、調査範囲では他に見当たりませんでした※。</p>
+      </div>
+      <div class="cm-card reveal">
+        <p class="lbl">まず、話すだけ</p>
+        <p class="big">55,000<small>円〜（仮）</small></p>
+        <p class="plus">本制作へ進めば、全額充当。</p>
+      </div>
+    </div>
+
+    <div class="cmp-table reveal">
+      <div class="cmp-head">
+        <div></div>
+        <div class="h-us">LIFE STORY<small>当サービス</small></div>
+        <div class="h-them">一般的な自分史映像サービス※</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-label">始めやすさ</div>
+        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>まず「話すだけ」<br>55,000円〜（仮）</p></div>
+        <div class="cmp-them"><span class="mk" aria-hidden="true">△</span><p>最初から本制作を契約<br>（約6万〜50万円超）</p></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-label">費用のゆくえ</div>
+        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>本制作へ進めば全額充当<br>＝無駄にならない</p></div>
+        <div class="cmp-them"><span class="mk" aria-hidden="true">—</span><p>充当の仕組みは<br>調査範囲では見当たらず</p></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-label">映像の長さ</div>
+        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>「何を残したいか」<br>人生から逆算して決める</p></div>
+        <div class="cmp-them"><span class="mk" aria-hidden="true">△</span><p>5分/10分/20分など<br>分数・日数の固定プラン</p></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-label">取材する人</div>
+        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>現役の番組ディレクター本人が<br>企画から編集まで一貫</p></div>
+        <div class="cmp-them"><span class="mk" aria-hidden="true">△</span><p>制作スタッフや<br>外部ネットワークによる分業も</p></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-label">もしもの後</div>
+        <div class="cmp-us"><span class="mk" aria-hidden="true">◎</span><p>データの保存・逝去後の扱いまで<br>契約前に文書で明示</p></div>
+        <div class="cmp-them"><span class="mk" aria-hidden="true">△</span><p>明示の範囲は<br>社により異なる</p></div>
+      </div>
+    </div>
+    <p class="note reveal" style="margin-top:1.4rem;">※「一般的な自分史映像サービス」は、自分史映像・終活映像の主要5社の公開情報（2026年8月時点・当社調べ・実ページ確認）をまとめた傾向です。各社のサービス内容・条件は異なり、単純な優劣を示すものではありません。当社の価格・条件はすべて仮のものです。</p>
+    <div class="cm-cta reveal"><a class="btn" href="#cta">まず、話してみる</a></div>
+  </div>
+</section>
+
+<!-- ===== 10 REASONS ===== -->
 <section>
   <div class="wrap">
-    <div class="chapter"><span class="no">09</span><span class="label">Why Life Story</span><span class="jp">選ばれる理由</span></div>
+    <div class="chapter"><span class="no">10</span><span class="label">Why Life Story</span><span class="jp">選ばれる理由</span></div>
     <ul class="reasons">
       <li class="reason reveal">
         <span class="kan" aria-hidden="true">一</span>
@@ -592,10 +693,10 @@
   </div>
 </section>
 
-<!-- ===== 10 GIFT ===== -->
+<!-- ===== 11 GIFT ===== -->
 <section class="gift">
   <div class="wrap">
-    <div class="chapter"><span class="no">10</span><span class="label">Gift Milestone</span><span class="jp">動く記念写真</span></div>
+    <div class="chapter"><span class="no">11</span><span class="label">Gift Milestone</span><span class="jp">動く記念写真</span></div>
     <div class="gift-grid">
       <div class="gift-copy">
         <h2 class="reveal">「親に、何を贈ろう。」<br>——その答えを、人生の映像に。</h2>
@@ -617,10 +718,10 @@
   </div>
 </section>
 
-<!-- ===== 11 TERMS ===== -->
+<!-- ===== 12 TERMS ===== -->
 <section>
   <div class="wrap">
-    <div class="chapter"><span class="no">11</span><span class="label">Delivery &amp; Terms</span><span class="jp">制作期間・納品・お支払い</span></div>
+    <div class="chapter"><span class="no">12</span><span class="label">Delivery &amp; Terms</span><span class="jp">制作期間・納品・お支払い</span></div>
     <div class="terms-grid">
       <div class="term reveal">
         <h3>制作期間の目安（仮）</h3>
@@ -642,10 +743,10 @@
   </div>
 </section>
 
-<!-- ===== 12 CLOSING + CTA ===== -->
+<!-- ===== 13 CLOSING + CTA ===== -->
 <section class="closing" id="cta">
   <div class="wrap">
-    <div class="chapter"><span class="no">12</span><span class="label">Closing</span><span class="jp">最初の一歩</span></div>
+    <div class="chapter"><span class="no">13</span><span class="label">Closing</span><span class="jp">最初の一歩</span></div>
     <div class="closing-grid">
       <div class="closing-copy">
         <p class="serif-lines reveal">人は、いつかいなくなる。<br>だからこそ、その人がいたことを、未来に残したい。<br>声。表情。笑い方。言葉。そして、その人らしさ。<br>いつか、この映像を見返したとき。<br>そこには、<em>もう一度会いたい人</em>がいる。</p>
