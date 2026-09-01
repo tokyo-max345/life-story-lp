@@ -360,6 +360,14 @@
   }
 
   /* ===== レスポンシブ ===== */
+  @media (max-width: 1200px) {
+    /* wrapが全幅になる帯域では右外し(-1.5rem)が横はみ出しになる */
+    .hero-side { right: 0.5rem; }
+  }
+  @media (max-width: 1100px) {
+    /* 比較表(min-width:960px)が収まらない全帯域でスクロールヒントを出す */
+    .mm-hint { display: block; }
+  }
   @media (max-width: 900px) {
     section { padding-top: 6rem; padding-bottom: 6rem; }
     .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 5.5rem; gap: 3rem; }
@@ -391,7 +399,6 @@
     .coltag { display: block; font-size: 0.66rem; letter-spacing: 0.18em; margin-bottom: 0.7rem; color: var(--ink-sub); }
     .coltag-us { color: var(--brass); font-weight: 700; }
     .cmp-us p br, .cmp-them p br { display: none; }
-    .mm-hint { display: block; }
     .cmp-us p, .cmp-them p { font-size: 0.82rem; }
     .mk { font-size: 1.5rem; }
   }
