@@ -171,6 +171,9 @@
   .card:hover h2, .card:hover h3 { color: var(--brass-deep); }
   .card p { font-size: 0.84rem; color: var(--ink-sub); line-height: 1.75; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .card.featured { margin-top: 1.5rem; }
+  .card.was-featured h2 { font-size: 1.05rem; -webkit-line-clamp: 2; }
+  .card.was-featured p { font-size: 0.84rem; }
+  .card.was-featured .body { padding: 1rem 1.15rem 1.25rem; }
   .card.featured .thumb { aspect-ratio: 21 / 9; }
   .card.featured .body { padding: 1.5rem 1.6rem 1.8rem; }
   .card.featured h2 { font-size: clamp(1.25rem, 2.6vw, 1.55rem); -webkit-line-clamp: 3; }
@@ -369,7 +372,23 @@
     if (!pills.length || !cards.length) return;
     var countEl = document.querySelector('[data-count]');
     var emptyEl = document.querySelector('[data-empty]');
+    // 最新記事の大カードは「すべて」のときだけ。絞り込み中はグリッド先頭の通常カードにする（1枚だけ大きいと収まりが悪い）
+    var featured = document.querySelector('.card.featured');
+    var grid = document.querySelector('.cards');
+    function layoutFeatured(cat) {
+      if (!featured || !grid) return;
+      if (cat) {
+        featured.classList.remove('featured');
+        featured.classList.add('was-featured');
+        if (featured.parentNode !== grid) grid.insertBefore(featured, grid.firstChild);
+      } else if (featured.classList.contains('was-featured')) {
+        featured.classList.add('featured');
+        featured.classList.remove('was-featured');
+        grid.parentNode.insertBefore(featured, grid);
+      }
+    }
     function apply(cat, push) {
+      layoutFeatured(cat);
       var n = 0;
       cards.forEach(function (c) {
         var show = !cat || c.getAttribute('data-section') === cat;
