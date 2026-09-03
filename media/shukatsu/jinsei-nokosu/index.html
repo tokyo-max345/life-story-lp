@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>自分の人生を残す方法 — 自分史・年表・写真・音声・映像、5つのかたち｜LIFE STORY</title>
+<title>自分の人生を残す方法 — 自分史・年表・写真・音声・映像、5つのかたち｜人生を残すラボ</title>
 <meta name="description" content="自分の人生を残す5つの方法（自分史の執筆・年表づくり・写真整理・音声・映像）を総覧。それぞれの特徴・始め方・費用感と、挫折しない組み合わせ方を紹介します。">
 <link rel="canonical" href="https://lifestory.akibaground.jp/media/shukatsu/jinsei-nokosu/">
+<link rel="alternate" type="application/rss+xml" title="人生を残すラボ 新着記事" href="https://lifestory.akibaground.jp/media/feed.xml">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%8E%9E%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="LIFE STORY">
-<meta property="og:title" content="自分の人生を残す方法 — 自分史・年表・写真・音声・映像、5つのかたち｜LIFE STORY">
+<meta property="og:title" content="自分の人生を残す方法 — 自分史・年表・写真・音声・映像、5つのかたち｜人生を残すラボ">
 <meta property="og:description" content="自分の人生を残す5つの方法（自分史の執筆・年表づくり・写真整理・音声・映像）を総覧。それぞれの特徴・始め方・費用感と、挫折しない組み合わせ方を紹介します。">
 <meta property="og:url" content="https://lifestory.akibaground.jp/media/shukatsu/jinsei-nokosu/">
-<meta property="og:image" content="https://lifestory.akibaground.jp/assets/og.jpg">
+<meta property="og:image" content="https://lifestory.akibaground.jp/assets/img5.jpg">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,46 +76,157 @@
     "name": "株式会社アキグラ",
     "url": "https://akibaground.jp/"
    },
-   "mainEntityOfPage": "https://lifestory.akibaground.jp/media/shukatsu/jinsei-nokosu/"
+   "mainEntityOfPage": "https://lifestory.akibaground.jp/media/shukatsu/jinsei-nokosu/",
+   "image": "https://lifestory.akibaground.jp/assets/img5.jpg"
   }
  ]
 }
 </script>
 <style>
   :root {
-    --paper: #f5f1e8; --paper-deep: #ede7d8; --ink: #262019; --ink-sub: #675d4e;
+    --paper: #f5f1e8; --paper-deep: #ede7d8; --paper-light: #fbf9f3; --ink: #262019; --ink-sub: #675d4e; --ink-faint: #8c8171;
     --line: #d8cfbc; --line-strong: #b3a68c; --brass: #8a5410; --brass-deep: #6f4209;
     --brass-light: #cfa05e; --sumi: #1d1a16; --sumi-text: #f1ece1; --sumi-sub: #b0a693;
+    --c-jibunshi: #8a5410; --c-shukatsu: #3f5f4a; --c-gift: #8f3a3a; --c-oya: #465577;
     --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
     --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 18px;
-         line-height: 1.95; letter-spacing: 0.02em; overflow-x: clip; }
+         line-height: 1.95; letter-spacing: 0.02em; overflow-x: clip; -webkit-font-smoothing: antialiased; }
   ::selection { background: var(--brass); color: var(--paper); }
   a { color: var(--brass-deep); text-underline-offset: 3px; }
-  img { max-width: 100%; height: auto; }
-  .wrap { max-width: 46em; margin: 0 auto; padding: 0 5vw; }
+  img { max-width: 100%; height: auto; display: block; }
+  .wrap { max-width: 72em; margin: 0 auto; padding: 0 5vw; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-  header.site { border-bottom: 1px solid var(--line-strong); background: var(--paper); }
-  header.site .in { max-width: 72em; margin: 0 auto; padding: 0.9rem 5vw; display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; }
-  .logo { font-family: var(--serif); font-weight: 700; letter-spacing: 0.26em; font-size: 1.05rem; color: var(--ink); text-decoration: none; }
-  nav.g { display: flex; gap: 1.3rem; flex-wrap: wrap; margin-left: auto; font-size: 0.86rem; }
-  nav.g a { color: var(--ink-sub); text-decoration: none; }
+  /* ── ヘッダー ── */
+  header.site { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--line-strong);
+                background: rgba(245,241,232,0.94); backdrop-filter: blur(8px); }
+  header.site .in { max-width: 72em; margin: 0 auto; padding: 0 5vw; min-height: 3.6rem; display: flex; align-items: center; gap: 1.4rem; }
+  .brand { display: flex; align-items: baseline; gap: 0.7rem; text-decoration: none; color: var(--ink); min-height: 44px; align-items: center; }
+  .brand a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  .brand .logo { font-family: var(--serif); font-weight: 700; letter-spacing: 0.26em; font-size: 1rem; color: var(--ink); }
+  .brand .media { font-family: var(--serif); font-weight: 600; font-size: 0.98rem; letter-spacing: 0.08em; color: var(--brass-deep);
+                  padding-left: 0.7rem; border-left: 1px solid var(--line-strong); }
+  .brand a:hover { color: var(--brass); }
+  nav.g { display: flex; gap: 1.2rem; margin-left: auto; font-size: 0.86rem; }
+  nav.g a { color: var(--ink-sub); text-decoration: none; padding: 0.6rem 0; }
   nav.g a:hover { color: var(--brass); }
-  .hd-cta { font-size: 0.84rem; background: var(--brass); color: #faf6ec !important; text-decoration: none;
-            padding: 0.5rem 1.1rem; border-radius: 2px; }
+  .hd-cta { font-size: 0.84rem; background: var(--brass); color: #faf6ec !important; text-decoration: none; white-space: nowrap;
+            padding: 0.55rem 1.1rem; border-radius: 2px; min-height: 40px; display: inline-flex; align-items: center; }
+  .hd-cta:hover { background: var(--brass-deep); }
+  @media (max-width: 900px) { nav.g { display: none; } .hd-cta { margin-left: auto; } .brand .media { font-size: 0.9rem; } }
+  @media (max-width: 480px) { .brand .logo { display: none; } .brand .media { border: 0; padding: 0; } }
 
-  .crumb { font-size: 0.8rem; color: var(--ink-sub); margin: 1.6rem 0 0; }
-  .crumb a { color: var(--ink-sub); }
-  article h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.6rem, 4.4vw, 2.2rem);
-               line-height: 1.6; letter-spacing: 0.04em; margin: 1.2rem 0 0.6rem; }
-  .meta-dates { font-size: 0.8rem; color: var(--ink-sub); border-bottom: 1px solid var(--line-strong);
-                padding-bottom: 1.4rem; margin-bottom: 2.2rem; }
-  article h2 { font-family: var(--serif); font-weight: 600; font-size: 1.4rem; line-height: 1.6;
+  /* ── パンくず ── */
+  .crumb { font-size: 0.8rem; color: var(--ink-sub); margin: 1.4rem 0 0; line-height: 1.7; }
+  .crumb a { color: var(--ink-sub); text-decoration: none; }
+  .crumb a:hover { color: var(--brass); text-decoration: underline; }
+  .crumb span[aria-current] { color: var(--ink-faint); }
+
+  /* ── 2カラム骨格 ── */
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; margin-top: 1.6rem; }
+  @media (min-width: 1024px) { .cols { grid-template-columns: minmax(0, 1fr) 18em; gap: 3.2rem; } .side { position: sticky; top: 4.6rem; align-self: start; } }
+  .col-main { min-width: 0; }
+  .side { display: flex; flex-direction: column; gap: 2rem; }
+
+  /* ── バッジ・メタ ── */
+  .badge { display: inline-flex; align-items: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1;
+           padding: 0.42rem 0.7rem; border-radius: 999px; background: var(--paper-light); border: 1px solid var(--line-strong); color: var(--brass-deep); }
+  .badge.s-jibunshi { color: var(--c-jibunshi); } .badge.s-shukatsu { color: var(--c-shukatsu); }
+  .badge.s-gift { color: var(--c-gift); } .badge.s-oya { color: var(--c-oya); }
+  .badge.new { background: var(--brass); color: #faf6ec; border-color: var(--brass); font-size: 0.66rem; padding: 0.38rem 0.55rem; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.8rem; font-size: 0.8rem; color: var(--ink-faint); }
+  .meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--line-strong); display: inline-block; }
+
+  /* ── ハブ: hero ── */
+  .hub-hero { padding: 2.6rem 0 1.6rem; }
+  .eyebrow { display: flex; align-items: center; gap: 0.7rem; font-size: 0.72rem; letter-spacing: 0.28em; color: var(--ink-faint); text-transform: uppercase; }
+  .eyebrow .mark { width: 2rem; height: 2rem; border-radius: 4px; background: var(--sumi); color: var(--brass-light); font-family: var(--serif);
+                   font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; letter-spacing: 0; }
+  .hub-hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.9rem, 4.6vw, 2.6rem); letter-spacing: 0.06em; line-height: 1.4; margin-top: 0.7rem; }
+  .hub-hero .lead { max-width: 36em; font-size: 0.98rem; color: var(--ink-sub); margin-top: 0.8rem; line-height: 1.9; }
+
+  /* ── ハブ: カテゴリピル ── */
+  .pills-wrap { position: relative; margin: 1.6rem 0 0; }
+  .pills { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.2rem 0 0.6rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.1rem; border-radius: 999px; font-size: 0.84rem;
+          text-decoration: none; color: var(--ink-sub); background: var(--paper-deep); border: 1px solid transparent; transition: background .2s, color .2s; }
+  .pill:hover { background: var(--line); color: var(--ink); }
+  .pill[aria-pressed="true"] { background: var(--sumi); color: var(--sumi-text); }
+  .pills-wrap::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0.6rem; width: 3rem; pointer-events: none;
+                       background: linear-gradient(to left, var(--paper), transparent); }
+  @media (min-width: 768px) { .pills-wrap::after { display: none; } }
+
+  /* ── カード ── */
+  .cards { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 1.5rem; }
+  @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .card { display: flex; flex-direction: column; background: var(--paper-light); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+          text-decoration: none; color: var(--ink); transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .card:hover { transform: translateY(-2px); border-color: var(--line-strong); box-shadow: 0 10px 26px -14px rgba(38,32,25,0.35); }
+  .card .thumb { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--paper-deep); }
+  .card .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .card:hover .thumb img { transform: scale(1.04); }
+  .card .tags { position: absolute; left: 0.75rem; top: 0.75rem; display: flex; gap: 0.4rem; }
+  .card .body { padding: 1rem 1.15rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .card h2, .card h3 { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; line-height: 1.55; letter-spacing: 0.02em;
+                       display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .card:hover h2, .card:hover h3 { color: var(--brass-deep); }
+  .card p { font-size: 0.84rem; color: var(--ink-sub); line-height: 1.75; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .card.featured { margin-top: 1.5rem; }
+  .card.featured .thumb { aspect-ratio: 21 / 9; }
+  .card.featured .body { padding: 1.5rem 1.6rem 1.8rem; }
+  .card.featured h2 { font-size: clamp(1.25rem, 2.6vw, 1.55rem); -webkit-line-clamp: 3; }
+  .card.featured p { font-size: 0.92rem; }
+  @media (max-width: 640px) { .card.featured .thumb { aspect-ratio: 16 / 9; } }
+  .card.pillar-card { border-color: var(--brass-light); }
+  .card[hidden] { display: none; }
+  .empty { padding: 3rem 1rem; text-align: center; color: var(--ink-faint); font-size: 0.9rem; }
+  .count { margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid var(--line); text-align: center; font-size: 0.8rem; color: var(--ink-faint); }
+
+  /* ── サイドバー ── */
+  .side h3, .side .sh { display: flex; align-items: center; gap: 0.6rem; font-family: var(--serif); font-size: 0.98rem; font-weight: 600; margin-bottom: 0.9rem; }
+  .side h3::before, .side .sh::before { content: ""; width: 3px; height: 1rem; background: var(--brass); border-radius: 2px; }
+  .rank { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+  .rank a { display: flex; gap: 0.75rem; align-items: flex-start; text-decoration: none; color: var(--ink); }
+  .rank .n { flex: 0 0 auto; width: 1.55rem; height: 1.55rem; border-radius: 3px; background: var(--sumi); color: var(--brass-light); font-size: 0.78rem;
+             font-weight: 700; display: inline-flex; align-items: center; justify-content: center; margin-top: 0.15rem; }
+  .rank .t { font-size: 0.86rem; line-height: 1.6; font-weight: 500; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .rank a:hover .t { color: var(--brass-deep); }
+  .rank .m { font-size: 0.74rem; color: var(--ink-faint); margin-top: 0.15rem; }
+  .side-cta { background: var(--sumi); color: var(--sumi-text); border-radius: 6px; padding: 1.4rem 1.3rem; }
+  .side-cta .k { font-family: var(--serif); font-size: 1.02rem; line-height: 1.6; }
+  .side-cta p { font-size: 0.82rem; color: var(--sumi-sub); margin: 0.5rem 0 0.9rem; line-height: 1.75; }
+  .side-cta .btn { display: flex; justify-content: center; width: 100%; padding: 0.8rem 1rem; font-size: 0.88rem; }
+  .side-cta .btn + .btn { margin-top: 0.55rem; }
+  .side-cta .sm { font-size: 0.72rem; color: var(--sumi-sub); margin: 0.7rem 0 0; text-align: center; }
+  .cats { list-style: none; display: flex; flex-direction: column; }
+  .cats a { display: flex; justify-content: space-between; align-items: center; min-height: 44px; padding: 0.35rem 0.2rem; text-decoration: none;
+            color: var(--ink); font-size: 0.88rem; border-bottom: 1px solid var(--line); }
+  .cats a:hover { color: var(--brass-deep); }
+  .cats .c { font-size: 0.76rem; color: var(--ink-faint); background: var(--paper-deep); border-radius: 999px; padding: 0.15rem 0.6rem; }
+  .side-links { list-style: none; font-size: 0.86rem; display: flex; flex-direction: column; gap: 0.2rem; }
+  .side-links a { display: inline-flex; align-items: center; min-height: 40px; color: var(--ink-sub); text-decoration: none; }
+  .side-links a:hover { color: var(--brass-deep); text-decoration: underline; }
+
+  /* ── 記事ページ ── */
+  .art-head { margin-top: 1.2rem; }
+  .art-head .meta a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+  .art-head h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.55rem, 4vw, 2.1rem); line-height: 1.55; letter-spacing: 0.04em; margin: 0.8rem 0 0.7rem; }
+  .byline { font-size: 0.82rem; color: var(--ink-sub); }
+  .byline a { color: var(--ink-sub); }
+  .hero { margin: 1.6rem 0 2.2rem; border-radius: 6px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--paper-deep); }
+  .hero img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-note { font-size: 0.72rem; color: var(--ink-faint); margin: -1.7rem 0 2rem; text-align: right; }
+  article .prose { max-width: 40em; }
+  article h2 { font-family: var(--serif); font-weight: 600; font-size: 1.38rem; line-height: 1.6;
                margin: 2.8rem 0 1rem; padding-top: 1.2rem; border-top: 1px solid var(--line-strong); }
   article h3 { font-family: var(--serif); font-weight: 600; font-size: 1.12rem; margin: 2rem 0 0.7rem; }
   article p { margin: 1.1rem 0; }
+  article .prose a { text-decoration: underline; }
   article ul, article ol { margin: 1.1rem 0 1.1rem 1.5em; }
   article li { margin: 0.4rem 0; }
   article table { border-collapse: collapse; width: 100%; margin: 1.4rem 0; font-size: 0.92rem; line-height: 1.75; display: block; overflow-x: auto; }
@@ -122,44 +234,58 @@
   article th { background: var(--paper-deep); font-family: var(--serif); }
   article blockquote { border-left: 3px solid var(--brass); padding: 0.2rem 0 0.2rem 1.2rem; color: var(--ink-sub); margin: 1.4rem 0; }
   article strong { font-weight: 700; }
+  .sec-list { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--line-strong); }
+  .sec-list h2 { border: 0; padding: 0; margin: 0 0 0.2rem; font-size: 1.25rem; }
+  .sec-list .sub { font-size: 0.84rem; color: var(--ink-sub); }
 
-  .supervisor { display: flex; gap: 1.1rem; align-items: flex-start; background: var(--paper-deep);
-                border: 1px solid var(--line-strong); border-radius: 2px; padding: 1.3rem 1.5rem; margin: 3rem 0 0; }
+  .supervisor { display: flex; gap: 1.1rem; align-items: flex-start; background: var(--paper-light);
+                border: 1px solid var(--line); border-radius: 6px; padding: 1.3rem 1.5rem; margin: 3rem 0 0; }
   .supervisor img { border-radius: 50%; flex-shrink: 0; }
   .sv-label { font-size: 0.72rem; letter-spacing: 0.24em; color: var(--brass); }
   .sv-name { font-family: var(--serif); font-size: 1.02rem; margin-top: 0.2rem; }
   .sv-name span { font-size: 0.8rem; color: var(--ink-sub); font-family: var(--sans); }
   .sv-bio { font-size: 0.84rem; color: var(--ink-sub); margin-top: 0.3rem; line-height: 1.8; }
 
-  .cta-block { background: var(--sumi); color: var(--sumi-text); border-radius: 2px;
-               padding: 2.2rem 2rem; margin: 2.2rem 0; }
+  .cta-block { background: var(--sumi); color: var(--sumi-text); border-radius: 6px; padding: 2.2rem 2rem; margin: 2.2rem 0; }
   .cta-block h2 { font-family: var(--serif); font-size: 1.3rem; line-height: 1.7; border: 0; margin: 0 0 0.8rem; padding: 0; }
   .cta-block p { color: var(--sumi-sub); font-size: 0.95rem; margin: 0.6rem 0; }
   .cta-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.4rem 0 0.6rem; }
-  .btn { display: inline-block; padding: 0.95rem 2rem; background: var(--brass-light); color: #241c0e;
-         text-decoration: none; font-weight: 700; letter-spacing: 0.1em; font-size: 0.94rem; border-radius: 2px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0.8rem 2rem; background: var(--brass-light); color: #241c0e;
+         text-decoration: none; font-weight: 700; letter-spacing: 0.1em; font-size: 0.94rem; border-radius: 3px; }
   .btn:hover { background: #ddb377; }
   .btn-line { background: #06C755; color: #fff; }
   .btn-line:hover { background: #05a648; }
   .cta-sub { font-size: 0.84rem; }
   .cta-sub a { color: var(--brass-light); }
 
-  .related { margin: 2.6rem 0 0; border-top: 1px solid var(--line-strong); padding-top: 1.4rem; }
-  .related h2 { font-family: var(--serif); font-size: 1.05rem; margin-bottom: 0.6rem; }
-  .related ul { list-style: none; }
-  .related li { padding: 0.45rem 0; border-bottom: 1px solid var(--line); font-size: 0.94rem; }
+  .related { margin: 2.6rem 0 0; }
+  .related h2 { border: 0; padding: 0; margin: 0 0 0.6rem; font-size: 1.15rem; }
+  .related ul { list-style: none; margin: 0; }
+  .related li { margin: 0; border-bottom: 1px solid var(--line); }
+  .related a { display: flex; align-items: center; gap: 0.6rem; min-height: 48px; padding: 0.5rem 0.2rem; font-size: 0.94rem; text-decoration: none; }
+  .related a::before { content: "›"; color: var(--brass); font-weight: 700; }
+  .related a:hover { color: var(--brass-deep); text-decoration: underline; }
+  .back { margin-top: 2.4rem; text-align: center; font-size: 0.86rem; }
+  .back a { color: var(--ink-sub); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 1rem; }
+  .back a:hover { color: var(--brass-deep); text-decoration: underline; }
 
+  /* ── フッター ── */
   footer.site { background: var(--sumi); color: var(--sumi-sub); margin-top: 4.5rem; padding: 2.8rem 0 3.2rem; font-size: 0.8rem; line-height: 2.1; }
   footer.site .in { max-width: 72em; margin: 0 auto; padding: 0 5vw; }
   footer.site .fc-name { color: var(--sumi-text); }
-  footer.site nav { display: flex; flex-wrap: wrap; gap: 0.3rem 1.6rem; margin-top: 0.7rem; }
-  footer.site a { color: var(--sumi-sub); text-decoration: none; border-bottom: 1px solid #4a4335; }
-  footer.site a:hover { color: var(--sumi-text); }
-  footer.site .brand { font-family: var(--serif); letter-spacing: 0.3em; color: var(--sumi-text); margin-top: 1.8rem; }
+  footer.site .fgrid { display: grid; grid-template-columns: 1fr; gap: 1.2rem 2.5rem; margin-top: 1.2rem; }
+  @media (min-width: 720px) { footer.site .fgrid { grid-template-columns: 1.4fr 1fr 1fr; } }
+  footer.site h4 { color: var(--sumi-text); font-family: var(--serif); font-weight: 600; font-size: 0.86rem; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  footer.site nav { display: flex; flex-direction: column; gap: 0.1rem; }
+  footer.site a { color: var(--sumi-sub); text-decoration: none; display: inline-flex; align-items: center; min-height: 36px; }
+  footer.site a:hover { color: var(--sumi-text); text-decoration: underline; }
+  footer.site .brand-f { font-family: var(--serif); letter-spacing: 0.3em; color: var(--sumi-text); margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid #3a3429; }
 
   @media (max-width: 560px) {
-    nav.g { gap: 0.9rem; font-size: 0.82rem; }
-    .cta-btns .btn { width: 100%; text-align: center; }
+    body { font-size: 17px; }
+    .cta-btns .btn { width: 100%; }
+    .cta-block { padding: 1.8rem 1.3rem; }
+    .supervisor { padding: 1.1rem 1.1rem; }
   }
 </style>
 </head>
@@ -167,25 +293,24 @@
 
 <header class="site">
   <div class="in">
-    <a class="logo" href="/">LIFE STORY</a>
-    <nav class="g" aria-label="サイト内">
+    <div class="brand">
+      <a class="logo" href="/" aria-label="LIFE STORY トップ">LIFE STORY</a>
+      <a class="media" href="/media/">人生を残すラボ</a>
+    </div>
+    <nav class="g" aria-label="テーマ">
+      <a href="/media/">記事一覧</a>
       <a href="/media/jibunshi/">自分史動画</a>
-      <a href="/media/shukatsu/">終活動画</a>
-      <a href="/media/gift/">長寿祝いギフト</a>
+      <a href="/media/shukatsu/">終活</a>
+      <a href="/media/gift/">長寿祝い</a>
       <a href="/media/oya/">親の人生を残す</a>
-      <a href="/flow/">制作の流れ</a>
-      <a href="/faq/">FAQ</a>
+      <a href="/">サービス</a>
     </nav>
     <a class="hd-cta" href="/#cta">無料で相談</a>
   </div>
 </header>
 
 <main class="wrap">
-  <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a> › <a href="/media/">人生を残すラボ</a> › <a href="/media/shukatsu/">終活動画・終活ガイド</a> › <span aria-current="page">自分の人生を残す方法 — 自分史・年表・写真・音声・映像、5つのかたち</span></nav>
-  <article>
-    <h1>自分の人生を残す方法 — 自分史・年表・写真・音声・映像、5つのかたち</h1>
-    <p class="meta-dates">公開: 2026-09-03　更新: 2026-09-03　執筆・監修: 中井敦（LIFE STORYプロデューサー）</p>
-    <p>自分の歩みを何かの形で残したい——その気持ちに応える方法は、大きく5つあります。文章で残す「自分史」、骨組みだけ作る「年表」、写真の整理、音声、そして映像。<strong>どれが正解ということはなく、費用も手間も残るものも違います</strong>。このページでは5つを総覧し、自分に合う始め方を見つけられるように整理します。</p>
+<nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a> › <a href="/media/">人生を残すラボ</a> › <a href="/media/shukatsu/">終活動画・終活ガイド</a> › <span aria-current="page">自分の人生を残す方法 — 自分史・年表・写真・音声・映像、5つのかたち</span></nav><div class="cols"><div class="col-main"><article><header class="art-head"><div class="meta"><a href="/media/shukatsu/" style="text-decoration:none"><span class="badge s-shukatsu">終活</span></a><span class="badge new">NEW</span><time datetime="2026-09-03">2026-09-03 更新</time><span class="dot"></span><span>公開 2026-09-03</span><span class="dot"></span><span>3分で読める</span></div><h1>自分の人生を残す方法 — 自分史・年表・写真・音声・映像、5つのかたち</h1><p class="byline">執筆・監修: <a href="/producer/">中井 敦</a>（LIFE STORYプロデューサー・株式会社アキグラ代表）</p></header><figure class="hero"><img src="/assets/img5.jpg" alt="" width="1200" height="675" fetchpriority="high"></figure><p class="hero-note">写真はイメージです</p><div class="prose"><p>自分の歩みを何かの形で残したい——その気持ちに応える方法は、大きく5つあります。文章で残す「自分史」、骨組みだけ作る「年表」、写真の整理、音声、そして映像。<strong>どれが正解ということはなく、費用も手間も残るものも違います</strong>。このページでは5つを総覧し、自分に合う始め方を見つけられるように整理します。</p>
 <h2>方法1: 自分史を書く — 文章でじっくり残す</h2>
 <p>原稿用紙やパソコンで、生い立ちから現在までを文章にする方法です。自費出版で一冊の本にするサービスもあれば、市販の「自分史ノート」に書き込む形もあります。</p>
 <ul>
@@ -214,30 +339,73 @@
 <li>節目の年に、自分史の執筆や映像制作でひとつの「作品」にまとめる（集大成）</li>
 </ol>
 <p>LIFE STORY が提供しているのは4の映像です。テレビ番組のディレクターが取材し、あなたの人生を一本のドキュメンタリー作品として残します（詳しくは<a href="/media/shukatsu/">終活動画という選択肢</a>へ）。カメラに向かって独りで話す必要はありません。<strong>聞き手がいるから、語れる</strong>——それが取材という方法の本質です。</p>
-<p>どの方法であれ、共通するコツは「完璧を目指さないこと」。年表1枚でも、1分の音声でも、残っていることに価値があります。</p>
-    <div class="supervisor"><img src="/assets/nakai.webp" alt="監修 中井敦" width="72" height="72" loading="lazy"><div><p class="sv-label">この記事の監修</p><p class="sv-name">中井 敦<span>（LIFE STORYプロデューサー・TVドキュメンタリー出身）</span></p><p class="sv-bio">株式会社アキグラ代表。『ガイアの夜明け』ほかテレビドキュメンタリー番組のディレクションを担当。<a href="/producer/">プロフィール詳細</a></p></div></div>
-    <aside class="cta-block"><h2>まず、話を聞いてみませんか</h2><p>ご相談・お見積りは無料です。料金が発生するのは、内容にご納得いただき正式にお申し込みいただいた後だけ。無理な営業は一切いたしません。</p><div class="cta-btns"><a class="btn" href="/?from=shukatsu-jinsei-nokosu#cta">無料で相談する（フォーム）</a><a class="btn btn-line" href="https://line.me/R/ti/p/@805pxrqw" target="_blank" rel="noopener">LINEで相談する</a></div><p class="cta-sub"><a href="/#cta">サービスと料金の詳細を見る</a>／<a href="/flow/">制作の流れ</a>／<a href="/faq/">よくある不安と回答</a></p></aside>
-    <aside class="related"><h2>あわせて読む</h2><ul><li><a href="/media/shukatsu/">終活動画という選択肢</a></li><li><a href="/media/shukatsu/nanikara/">終活は何から始める？</a></li><li><a href="/media/jibunshi/">自分史動画とは</a></li></ul></aside>
-  </article>
+<p>どの方法であれ、共通するコツは「完璧を目指さないこと」。年表1枚でも、1分の音声でも、残っていることに価値があります。</p></div><div class="supervisor"><img src="/assets/nakai.webp" alt="監修 中井敦" width="72" height="72" loading="lazy"><div><p class="sv-label">この記事の監修</p><p class="sv-name">中井 敦<span>（LIFE STORYプロデューサー・TVドキュメンタリー出身）</span></p><p class="sv-bio">株式会社アキグラ代表。『ガイアの夜明け』ほかテレビドキュメンタリー番組のディレクションを担当。<a href="/producer/">プロフィール詳細</a></p></div></div><aside class="cta-block"><h2>まず、話を聞いてみませんか</h2><p>ご相談・お見積りは無料です。料金が発生するのは、内容にご納得いただき正式にお申し込みいただいた後だけ。無理な営業は一切いたしません。</p><div class="cta-btns"><a class="btn" href="/?from=shukatsu-jinsei-nokosu#cta">無料で相談する（フォーム）</a><a class="btn btn-line" href="https://line.me/R/ti/p/@805pxrqw" target="_blank" rel="noopener">LINEで相談する</a></div><p class="cta-sub"><a href="/#cta">サービスと料金の詳細を見る</a>／<a href="/flow/">制作の流れ</a>／<a href="/faq/">よくある不安と回答</a></p></aside><aside class="related"><h2>あわせて読む</h2><ul><li><a href="/media/shukatsu/">終活動画という選択肢</a></li><li><a href="/media/shukatsu/nanikara/">終活は何から始める？</a></li><li><a href="/media/jibunshi/">自分史動画とは</a></li></ul></aside><div class="back"><a href="/media/">← 人生を残すラボ 記事一覧に戻る</a></div></article></div><aside class="side" aria-label="サイドバー"><section><h3>人気の記事</h3><ol class="rank"><li><a href="/media/jibunshi/ryokin/"><span class="n">1</span><span><span class="t">自分史動画の料金相場 — 実測5社の価格帯と、料金の見方</span><span class="m">2分で読める</span></span></a></li><li><a href="/media/shukatsu/ending-note-kakenai/"><span class="n">2</span><span><span class="t">エンディングノートが書けない — 3つの理由と、書けないときの対処</span><span class="m">2分で読める</span></span></a></li><li><a href="/media/gift/kanreki/"><span class="n">3</span><span><span class="t">還暦のお祝い — 60歳の父・母に「モノではない贈り物」を選ぶ</span><span class="m">2分で読める</span></span></a></li></ol></section><section class="side-cta"><p class="k">まず、話を聞いてみませんか</p><p>テレビ番組のディレクターが、人生を聞くところから始める終活映像サービス。ご相談・お見積りは無料です。</p><a class="btn" href="/#cta">無料で相談する</a><a class="btn btn-line" href="https://line.me/R/ti/p/@805pxrqw" target="_blank" rel="noopener">LINEで相談する</a><p class="sm">料金が発生するのは正式申込後だけ・無理な営業なし</p></section><section><h3>テーマから探す</h3><ul class="cats"><li><a href="/media/?cat=jibunshi"><span>自分史動画</span><span class="c">4</span></a></li><li><a href="/media/?cat=shukatsu"><span>終活動画・終活ガイド</span><span class="c">5</span></a></li><li><a href="/media/?cat=gift"><span>長寿祝いギフト</span><span class="c">8</span></a></li><li><a href="/media/?cat=oya"><span>親の人生を残す</span><span class="c">5</span></a></li></ul></section><section><h3>LIFE STORY について</h3><ul class="side-links"><li><a href="/">サービスと料金</a></li><li><a href="/flow/">制作の流れ</a></li><li><a href="/faq/">よくある不安と回答</a></li><li><a href="/producer/">プロデューサー紹介</a></li></ul></section></aside></div>
 </main>
 
 <footer class="site">
   <div class="in">
-    <p class="fc-name">運営: 株式会社アキグラ（LIFE STORY は株式会社アキグラの提供サービス・屋号です）</p>
-    <p>代表取締役: 中井 敦　／　所在地: 〒160-0022 東京都新宿区新宿5-10-8　／　お問い合わせ: info@akibaground.jp</p>
-    <nav aria-label="関連ページ">
-      <a href="/">LIFE STORY トップ</a>
-      <a href="/media/">読みもの一覧</a>
-      <a href="/flow/">制作の流れ</a>
-      <a href="/faq/">よくある不安と回答</a>
-      <a href="/producer/">プロデューサー紹介</a>
-      <a href="https://akibaground.jp/" target="_blank" rel="noopener">株式会社アキグラ</a>
-      <a href="https://akibaground.jp/tokushoho/" target="_blank" rel="noopener">特定商取引法に基づく表記</a>
-      <a href="https://akibaground.jp/privacypolicy/" target="_blank" rel="noopener">プライバシーポリシー</a>
-    </nav>
-    <p class="brand">LIFE STORY</p>
+    <div class="fgrid">
+      <div>
+        <p class="fc-name">人生を残すラボ ― 終活映像サービス LIFE STORY が運営するメディア</p>
+        <p>運営: 株式会社アキグラ（LIFE STORY は株式会社アキグラの提供サービス・屋号です）<br>
+        代表取締役: 中井 敦　／　所在地: 〒160-0022 東京都新宿区新宿5-10-8　／　お問い合わせ: info@akibaground.jp</p>
+      </div>
+      <div>
+        <h4>テーマ</h4>
+        <nav aria-label="テーマ別">
+          <a href="/media/">記事一覧</a>
+          <a href="/media/jibunshi/">自分史動画</a>
+          <a href="/media/shukatsu/">終活動画・終活ガイド</a>
+          <a href="/media/gift/">長寿祝いギフト</a>
+          <a href="/media/oya/">親の人生を残す</a>
+        </nav>
+      </div>
+      <div>
+        <h4>LIFE STORY</h4>
+        <nav aria-label="サービス・運営情報">
+          <a href="/">サービスと料金</a>
+          <a href="/flow/">制作の流れ</a>
+          <a href="/faq/">よくある不安と回答</a>
+          <a href="/producer/">プロデューサー紹介</a>
+          <a href="https://akibaground.jp/" target="_blank" rel="noopener">株式会社アキグラ</a>
+          <a href="https://akibaground.jp/tokushoho/" target="_blank" rel="noopener">特定商取引法に基づく表記</a>
+          <a href="https://akibaground.jp/privacypolicy/" target="_blank" rel="noopener">プライバシーポリシー</a>
+        </nav>
+      </div>
+    </div>
+    <p class="brand-f">LIFE STORY</p>
   </div>
 </footer>
 
+<script>
+  // カテゴリ絞り込み（?cat=）。JS無効時は全件表示のまま（リンクは通常遷移）
+  (function () {
+    var pills = document.querySelectorAll('.pill[data-cat]');
+    var cards = document.querySelectorAll('.card[data-section]');
+    if (!pills.length || !cards.length) return;
+    var countEl = document.querySelector('[data-count]');
+    var emptyEl = document.querySelector('[data-empty]');
+    function apply(cat, push) {
+      var n = 0;
+      cards.forEach(function (c) {
+        var show = !cat || c.getAttribute('data-section') === cat;
+        c.hidden = !show; if (show) n++;
+      });
+      pills.forEach(function (p) {
+        var on = (p.getAttribute('data-cat') || '') === (cat || '');
+        p.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (on && p.scrollIntoView) p.scrollIntoView({ inline: 'center', block: 'nearest' }); // モバイルで選択中ピルが画面外に出ない
+      });
+      if (countEl) countEl.textContent = n + '本の記事を公開中';
+      if (emptyEl) emptyEl.hidden = n !== 0;
+      if (push) history.replaceState(null, '', cat ? '?cat=' + cat : location.pathname);
+    }
+    pills.forEach(function (p) {
+      p.addEventListener('click', function (e) { e.preventDefault(); apply(p.getAttribute('data-cat') || '', true); });
+    });
+    var m = location.search.match(/[?&]cat=([a-z]+)/);
+    if (m) apply(m[1], false);
+  })();
+</script>
 </body>
 </html>
