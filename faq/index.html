@@ -491,7 +491,9 @@
       p.addEventListener('click', function (e) { e.preventDefault(); apply(p.getAttribute('data-cat') || '', true); });
     });
     var m = location.search.match(/[?&]cat=([a-z]+)/);
-    if (m) apply(m[1], false);
+    var known = Array.prototype.map.call(pills, function (p) { return p.getAttribute('data-cat'); });
+    if (m && known.indexOf(m[1]) !== -1) apply(m[1], false);
+    else if (m) history.replaceState(null, '', location.pathname); // 未知のテーマ名は「すべて」扱い（0件表示にしない）
   })();
 </script>
 </body>
