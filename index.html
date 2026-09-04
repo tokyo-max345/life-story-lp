@@ -228,6 +228,8 @@
   .profile-facts li { border-top: 1px solid var(--line); padding: 0.85rem 0.2rem; display: flex; gap: 1.4rem; align-items: baseline; font-size: 0.9rem; }
   .profile-facts .k { font-family: var(--serif); color: var(--brass); flex-shrink: 0; }
   .profile-facts .v { color: var(--ink-sub); }
+  /* 写真のない2枚目（参加予定ディレクター）は1カラム・1枚目に続けて詰める */
+  .profile-card--nophoto { grid-template-columns: 1fr; margin-top: 1.6rem; }
 
   /* ===== FLOW（段違いタイムライン） ===== */
   .flow-item {
@@ -490,6 +492,7 @@
     .hero-figure { max-width: 30rem; }
     .q-grid, .issue-grid, .ask-flow, .director-grid, .gift-grid, .closing-grid { grid-template-columns: 1fr; gap: 3rem; }
     .profile-card { grid-template-columns: 1fr; margin-top: 3rem; }
+    .profile-card--nophoto { margin-top: 1.4rem; }
     .profile-photo img { border-radius: 2px 2px 0 0; }
     .profile-body { padding: 2rem 1.6rem; }
     .cm-verdict { grid-template-columns: 1fr; gap: 3rem; margin-bottom: 3.5rem; }
@@ -622,7 +625,7 @@
       </figure>
       <div class="director-copy">
         <h2 class="h-lg reveal">現役の<span class="nw">番組ディレクター</span><em>本人</em>が、<br>あなたを取材する。</h2>
-        <p class="lead reveal">『ガイアの夜明け』をはじめ、数々のテレビドキュメンタリー番組のディレクションを担当。全国放送で培われた構成力・取材力を、一人ひとりの人生映像に注ぎます。「制作会社のネットワーク」ではなく、企画から取材・構成まで、番組を作ってきたディレクター自身が一貫して向き合う。</p>
+        <p class="lead reveal"><span class="nw">『ガイアの夜明け』</span><span class="nw">『ザ・ノンフィクション』</span>など、数々のテレビドキュメンタリー番組のディレクションを担当。初対面の相手から話を引き出し、一本の物語にまとめる力で、一人ひとりの人生映像をつくります。撮影や編集を外部スタッフに任せない。企画から取材・構成・編集まで一貫して、ほぼ単身で番組を作ってきたディレクター自身が、あなたの人生に向き合う。</p>
         <ul class="director-points">
           <li class="reveal"><span class="k">取材力</span><span class="v">短時間で信頼関係を築くインタビュー力</span></li>
           <li class="reveal"><span class="k">構成力</span><span class="v">「物語として魅せる」全国放送基準の構成・編集</span></li>
@@ -639,12 +642,26 @@
       <div class="profile-body">
         <p class="profile-label">Producer Profile</p>
         <h3 class="serif">中井 敦<span class="nw">（なかい あつし）</span></h3>
-        <p class="profile-bio">株式会社アキグラ 代表取締役。『ガイアの夜明け』をはじめ数々のテレビドキュメンタリー番組のディレクションを担当し、NHK 東日本大震災復興特別番組の中継ディレクターなども務めた。全国放送の現場で培った取材力と構成力で、企画から取材・構成・編集までを一人で貫く。「その人の人生を、その人の言葉で聞く」ことを何よりも大切にしています。</p>
+        <p class="profile-bio">株式会社アキグラ 代表取締役。NHK 東日本大震災復興特別番組の中継ディレクターから、アイドルの裏側をリアルに描く YouTube の毎日投稿まで、多くのドキュメンタリー番組を担当。ほかにアイドルの MV なども手がける。企画から取材・構成・編集までを一人で貫く。「その人の人生を、その人の言葉で聞く」ことを何よりも大切にしています。</p>
         <ul class="profile-facts">
           <li><span class="k">所属</span><span class="v">株式会社アキグラ 代表取締役（LIFE STORY は同社の提供サービスです）</span></li>
           <li><span class="k">担当領域</span><span class="v">企画・取材・構成・編集の一貫ディレクション</span></li>
-          <li><span class="k">主な実績</span><span class="v">『ガイアの夜明け』／NHK 東日本大震災復興特別番組 中継ディレクター／かりゆし「アンマー」制作（約9,800万再生）ほか</span></li>
+          <li><span class="k">主な実績</span><span class="v">NHK 東日本大震災復興特別番組 <span class="nw">中継ディレクター</span>／YouTube 仮面女子 毎日ドキュメンタリー<span class="nw">『純血』</span>／仮面女子<span class="nw">『ファンファーレ』</span>ほか</span></li>
           <li><span class="k">実績詳細</span><span class="v"><a href="https://akibaground.jp/works/" target="_blank" rel="noopener">株式会社アキグラ 制作実績ページ</a></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 参加予定ディレクター（現職に在籍中のため実名は非公開・参加時点で公開） -->
+    <div class="profile-card profile-card--nophoto reveal">
+      <div class="profile-body">
+        <p class="profile-label">Joining Director</p>
+        <h3 class="serif">参加予定ディレクター</h3>
+        <p class="profile-bio">現在、全国放送のドキュメンタリー番組を担当。スポーツ関係や医療系のドキュメンタリーを手がける。多くの取材経験から対象の本質を汲み取り、一つの物語にまとめる。</p>
+        <ul class="profile-facts">
+          <li><span class="k">お名前</span><span class="v">現在は他社に在籍中のため非公開です（LIFE STORY 参加時点で公開します）</span></li>
+          <li><span class="k">担当領域</span><span class="v">企画・取材・構成・編集の一貫ディレクション</span></li>
+          <li><span class="k">主な実績</span><span class="v"><span class="nw">『ガイアの夜明け』</span><span class="nw">『ザ・ノンフィクション』</span>担当／<span class="nw">『カンブリア宮殿』</span>参加</span></li>
         </ul>
       </div>
     </div>
@@ -779,7 +796,7 @@
     </div>
     <div class="plan-upgrade reveal">
       <p><strong>SESSION の料金は、本制作へ進む場合に制作費へ全額充当。</strong>「話してみる」が無駄になりません。あなたの物語を、まず言葉にするところから始まります。</p>
-      <p class="note" style="margin-top:0.6rem;">※ 表示価格はすべて税込です。<br>※ 立ち上げ期は、事例掲載・お客様の声へのご協力を条件としたモニター価格をご用意します（掲載時はモニター条件である旨を明示します）。</p>
+      <p class="note" style="margin-top:0.6rem;">※ 表示価格はすべて税込です。<br>※ 立ち上げ期は、事例掲載・お客様の声へのご協力を条件としたモニター価格をご用意します（掲載時はモニター条件である旨を明示します）。<br>※ 納品スケジュール：LIFE STORY SESSION は撮影後から1ヶ月以内。LIFE STORY と LIFE STORY DOCUMENTARY は撮影開始からとなり、企画内容により変動します。記載の納期はいずれも目安です。</p>
     </div>
   </div>
 </section>
@@ -980,7 +997,7 @@
     <div class="terms-grid">
       <div class="term reveal">
         <h3>制作期間の目安</h3>
-        <p>SESSION＝撮影後約1ヶ月 / LIFE STORY＝約2〜3ヶ月 / DOCUMENTARY＝約3〜4ヶ月（取材回数により調整）</p>
+        <p>SESSION＝撮影後から1ヶ月以内 / LIFE STORY＝撮影開始から約2〜3ヶ月 / DOCUMENTARY＝撮影開始から約3〜4ヶ月。LIFE STORY と DOCUMENTARY は企画内容・取材回数により変動します。記載の納期はいずれも目安です。</p>
       </div>
       <div class="term reveal">
         <h3>納品形態</h3>
@@ -1021,7 +1038,7 @@
       </li>
       <li class="reveal">
         <h3>完成までどのくらいかかりますか。</h3>
-        <p>目安として SESSION は撮影後約1ヶ月、LIFE STORY は約2〜3ヶ月、DOCUMENTARY は約3〜4ヶ月です（取材回数により調整します）。お急ぎの節目がある場合はご相談ください。</p>
+        <p>SESSION は撮影後から1ヶ月以内、LIFE STORY は撮影開始から約2〜3ヶ月、DOCUMENTARY は撮影開始から約3〜4ヶ月が目安です。LIFE STORY と DOCUMENTARY は企画内容・取材回数により変動します。記載の納期はいずれも目安ですので、お急ぎの節目がある場合はご相談ください。</p>
       </li>
       <li class="reveal">
         <h3>相談した時点で費用はかかりますか。</h3>
