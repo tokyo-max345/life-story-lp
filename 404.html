@@ -195,6 +195,9 @@
   .sv-name { font-family: var(--serif); font-size: 1.02rem; margin-top: 0.2rem; }
   .sv-name span { font-size: 0.8rem; color: var(--ink-sub); font-family: var(--sans); }
   .sv-bio { font-size: 0.84rem; color: var(--ink-sub); margin-top: 0.3rem; line-height: 1.8; }
+  /* YMYL免責。高齢読者が読める下限を守るため 0.78rem 未満にしない・コントラストは本文と同じ ink-sub */
+  .sv-disclaimer { font-size: 0.78rem; color: var(--ink-sub); line-height: 1.8; margin-top: 0.7rem;
+                   padding-top: 0.7rem; border-top: 1px solid var(--line); }
 
   .cta-block { background: var(--sumi); color: var(--sumi-text); border-radius: 6px; padding: 2.2rem 2rem; margin: 2.2rem 0; }
   .cta-block h2 { font-family: var(--serif); font-size: 1.3rem; line-height: 1.7; border: 0; margin: 0 0 0.8rem; padding: 0; }
