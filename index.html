@@ -465,6 +465,8 @@
   }
   .contact-form select { appearance: auto; }
   .contact-form textarea { min-height: 7.5rem; resize: vertical; }
+  /* 入力例: ブラウザ標準(#757575)は #2a2620 の上で3.26:1 → #A0A0A0 で5.75:1 */
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: #A0A0A0; opacity: 1; }
   .contact-form input:focus-visible, .contact-form select:focus-visible, .contact-form textarea:focus-visible {
     outline: 2px solid var(--brass-light); outline-offset: 1px;
   }
@@ -476,7 +478,8 @@
   /* ===== LINE相談（フォームの代替チャネル） ===== */
   .line-cta { margin-top: 2.6rem; padding-top: 2.2rem; border-top: 1px solid #4a4335; max-width: 40em; }
   .line-lead { font-size: 0.95rem; color: var(--sumi-text); margin-bottom: 1.1rem; }
-  .closing .btn-line, .btn-line { background: #06C755; border-color: #06C755; color: #fff; font-weight: 700; }
+  /* LINEの緑(#06C755)は変えず文字を黒に: 白は2.26:1 → 黒は9.31:1(hover 6.55 / active 4.71) */
+  .closing .btn-line, .btn-line { background: #06C755; border-color: #06C755; color: #000; font-weight: 700; }
   .closing .btn-line:hover, .btn-line:hover { background: #05a648; border-color: #05a648; }
   .closing .btn-line:active, .btn-line:active { background: #048a3c; }
   .closing .btn-line:focus-visible, .btn-line:focus-visible { outline-color: #06C755; }
